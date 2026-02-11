@@ -113,7 +113,7 @@ const skillItems: SectionItem[] = [
   },
 ];
 
-const LeetCodeCard = () => {
+const LeetCodeCard = ({ className = "" }: { className?: string }) => {
   const { data, isLoading } = useLeetCodeStats();
   return (
     <div className="border border-border rounded-sm bg-card overflow-hidden">
