@@ -218,7 +218,9 @@ const Index = () => {
               <Github size={14} />
             </a>
             <a
-              href="#"
+              href="/Daniel_Olusheki_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Resume"
             >
