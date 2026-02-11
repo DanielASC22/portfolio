@@ -22,160 +22,94 @@ const HELLO_PHRASES = [
 const experienceItems: SectionItem[] = [
   {
     title: "Undergraduate Computational Biology Researcher",
-    content: (
-      <div>
-        <p className="text-xs text-muted-foreground">Brandeis University · Sebastian Kadener Lab · Oct 2025 – Present</p>
-      </div>
-    ),
+    subtitle: "Brandeis University · Sebastian Kadener Lab · Oct 2025 – Present",
   },
   {
     title: "TAMID Group",
-    content: (
-      <div>
-        <p className="text-xs text-muted-foreground">Brandeis University · Oct 2025 – Present</p>
-      </div>
-    ),
+    subtitle: "Brandeis University · Oct 2025 – Present",
   },
   {
     title: "Intern — Brand New School",
-    content: (
-      <div>
-        <p className="text-xs text-muted-foreground">New York, NY · May 2025 – Jun 2025</p>
-        <ul className="list-disc list-inside mt-2 space-y-1 text-xs">
-          <li>Gained production-level proficiency in Houdini, building procedural node networks and a custom text-to-3D letterform system over 7 weeks.</li>
-          <li>Developed skills in 3D modeling, lighting, rendering, and animation; produced experimental typography renders and a motion reel.</li>
-          <li>Exhibited 500+ digital artworks in a multimedia gallery showcase, engaging 100+ attendees.</li>
-        </ul>
-      </div>
-    ),
+    subtitle: "New York, NY · May 2025 – Jun 2025",
+    bullets: [
+      "Gained production-level proficiency in Houdini, building procedural node networks and a custom text-to-3D letterform system over 7 weeks.",
+      "Developed skills in 3D modeling, lighting, rendering, and animation; produced experimental typography renders and a motion reel.",
+      "Exhibited 500+ digital artworks in a multimedia gallery showcase, engaging 100+ attendees.",
+    ],
   },
   {
     title: "Student — Code Nation",
-    content: (
-      <div>
-        <p className="text-xs text-muted-foreground">New York, NY · Oct 2022 – Jun 2024</p>
-        <ul className="list-disc list-inside mt-2 space-y-1 text-xs">
-          <li>Completed a two-year Google-hosted coding fellowship (~120+ hours), building multiple front-end projects with JavaScript and React.js.</li>
-          <li>Participated in a Hackathon at Google's NY HQ, collaborating on a prototype hobby-matching web app.</li>
-        </ul>
-      </div>
-    ),
+    subtitle: "New York, NY · Oct 2022 – Jun 2024",
+    bullets: [
+      "Completed a two-year Google-hosted coding fellowship (~120+ hours), building multiple front-end projects with JavaScript and React.js.",
+      "Participated in a Hackathon at Google's NY HQ, collaborating on a prototype hobby-matching web app.",
+    ],
   },
   {
     title: "Generation Tech — JPMorganChase",
-    content: (
-      <div>
-        <p className="text-xs text-muted-foreground">New York, NY · Oct 2022 – Nov 2022</p>
-        <ul className="list-disc list-inside mt-2 space-y-1 text-xs">
-          <li>Collaborated with an 8-person team to design iPurify, a concept app addressing global water pollution.</li>
-          <li>Built an animated mobile wireframe using Thunkable and researched environmental policy for real-world feasibility.</li>
-        </ul>
-      </div>
-    ),
+    subtitle: "New York, NY · Oct 2022 – Nov 2022",
+    bullets: [
+      "Collaborated with an 8-person team to design iPurify, a concept app addressing global water pollution.",
+      "Built an animated mobile wireframe using Thunkable and researched environmental policy for real-world feasibility.",
+    ],
   },
   {
     title: "Student — All Star Code",
-    content: (
-      <div>
-        <p className="text-xs text-muted-foreground">New York, NY · Jul 2022 – Aug 2022</p>
-        <ul className="list-disc list-inside mt-2 space-y-1 text-xs">
-          <li>Selected for a competitive 6-week Summer Intensive (5,900+ applicants, ~1,000 participants to date).</li>
-          <li>Led full-stack development of a 50-resource Community Service Accessibility website, inspiring a $100 donation at the demo.</li>
-        </ul>
-      </div>
-    ),
+    subtitle: "New York, NY · Jul 2022 – Aug 2022",
+    bullets: [
+      "Selected for a competitive 6-week Summer Intensive (5,900+ applicants, ~1,000 participants to date).",
+      "Led full-stack development of a 50-resource Community Service Accessibility website, inspiring a $100 donation at the demo.",
+    ],
   },
   {
     title: "Awards",
-    content: (
-      <div>
-        <ul className="space-y-2 text-xs">
-          <li><span className="text-foreground font-medium">Best Non-Technical Hack</span> — DeisHacks 2026 · $500 award</li>
-          <li><span className="text-foreground font-medium">Posse Foundation Full-Tuition Scholarship</span> — 1 of 12 selected from ~3,000 · $200K+ value</li>
-          <li><span className="text-foreground font-medium">F. Coit Johnson Academic Excellence Award</span> — Perfect straight-A transcript · LREI 2025</li>
-          <li><span className="text-foreground font-medium">Owen Gerson Director's Award</span> — Given to one student per year for lasting impact · LREI 2025</li>
-          <li><span className="text-foreground font-medium">1st Place Robot Design Award</span> — NYC FIRST Lego League · 2019</li>
-        </ul>
-      </div>
-    ),
+    bullets: [
+      "Best Non-Technical Hack — DeisHacks 2026 · $500 award",
+      "Posse Foundation Full-Tuition Scholarship — 1 of 12 selected from ~3,000 · $200K+ value",
+      "F. Coit Johnson Academic Excellence Award — Perfect straight-A transcript · LREI 2025",
+      "Owen Gerson Director's Award — Given to one student per year for lasting impact · LREI 2025",
+      "1st Place Robot Design Award — NYC FIRST Lego League · 2019",
+    ],
   },
 ];
 
 const projectItems: SectionItem[] = [
   {
     title: "DeisHacks — Website Revamp",
-    content: (
-      <div>
-        <p className="text-xs mt-1">Led a 48-hour hackathon sprint revamping the Charles River Museum of Industry & Innovation's website as Lead Product Developer. Won "Best Non-Technical Hack."</p>
-        <a href="https://devpost.com/software/askdjaskd" target="_blank" rel="noopener noreferrer" className="text-xs text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors mt-2 inline-block">View on Devpost →</a>
-      </div>
-    ),
+    description: 'Led a 48-hour hackathon sprint revamping the Charles River Museum of Industry & Innovation\'s website as Lead Product Developer. Won "Best Non-Technical Hack."',
+    link: { text: "View on Devpost →", url: "https://devpost.com/software/askdjaskd" },
   },
   {
     title: "ShareService",
-    content: (
-      <div>
-        <p className="text-xs mt-1">Full-stack volunteering accessibility website built at All Star Code. An audience member donated $100 to a featured organization after the demo.</p>
-        <a href="https://danielasc22.github.io/ShareService/" target="_blank" rel="noopener noreferrer" className="text-xs text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors mt-2 inline-block">View project →</a>
-      </div>
-    ),
+    description: "Full-stack volunteering accessibility website built at All Star Code. An audience member donated $100 to a featured organization after the demo.",
+    link: { text: "View project →", url: "https://danielasc22.github.io/ShareService/" },
   },
   {
     title: "Mass Shootings in America",
-    content: (
-      <div>
-        <p className="text-xs mt-1">Data visualization project aiming to reveal patterns in mass shooting data to explore potential solutions.</p>
-      </div>
-    ),
+    description: "Data visualization project aiming to reveal patterns in mass shooting data to explore potential solutions.",
   },
   {
     title: "Brand New School Gallery",
-    content: (
-      <div>
-        <p className="text-xs mt-1">Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.</p>
-      </div>
-    ),
+    description: "Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.",
   },
   {
     title: "Drawing in Distortion",
-    content: (
-      <div>
-        <p className="text-xs mt-1">An exploration of 5-point perspective, experimenting with a unique way of viewing and representing life through distortion.</p>
-      </div>
-    ),
+    description: "An exploration of 5-point perspective, experimenting with a unique way of viewing and representing life through distortion.",
   },
 ];
 
 const skillItems: SectionItem[] = [
   {
     title: "Languages & Frameworks",
-    content: (
-      <div className="flex flex-wrap gap-2">
-        {["JavaScript", "React.js", "HTML", "CSS", "TypeScript"].map((s) => (
-          <span key={s} className="px-2 py-1 text-xs border border-border rounded-sm bg-accent/50">{s}</span>
-        ))}
-      </div>
-    ),
+    tags: ["JavaScript", "React.js", "HTML", "CSS", "TypeScript"],
   },
   {
     title: "Tools & Platforms",
-    content: (
-      <div className="flex flex-wrap gap-2">
-        {["GitHub", "Houdini", "After Effects", "Thunkable", "Mantra"].map((s) => (
-          <span key={s} className="px-2 py-1 text-xs border border-border rounded-sm bg-accent/50">{s}</span>
-        ))}
-      </div>
-    ),
+    tags: ["GitHub", "Houdini", "After Effects", "Thunkable", "Mantra"],
   },
   {
     title: "Other",
-    content: (
-      <div className="flex flex-wrap gap-2">
-        {["Creative Direction", "Visual Storytelling", "Debugging", "Web Development", "Game Design", "Presentation Skills"].map((s) => (
-          <span key={s} className="px-2 py-1 text-xs border border-border rounded-sm bg-accent/50">{s}</span>
-        ))}
-      </div>
-    ),
+    tags: ["Creative Direction", "Visual Storytelling", "Debugging", "Web Development", "Game Design", "Presentation Skills"],
   },
 ];
 
