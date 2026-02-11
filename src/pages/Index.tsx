@@ -162,7 +162,7 @@ const Index = () => {
             /><span className="text-muted-foreground">,</span>
           </div>
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
-            Daniel Olusheki
+            I'm Daniel Olusheki
           </h1>
         </div>
 
