@@ -116,7 +116,7 @@ const skillItems: SectionItem[] = [
 const LeetCodeCard = ({ className = "" }: { className?: string }) => {
   const { data, isLoading } = useLeetCodeStats();
   return (
-    <div className="border border-border rounded-sm bg-card overflow-hidden">
+    <div className={`border border-border rounded-sm bg-card overflow-hidden ${className}`}>
       <div className="px-4 py-3 border-b border-border flex items-center justify-between">
         <span className="text-sm font-medium text-foreground tracking-wide uppercase">LeetCode</span>
         <a
