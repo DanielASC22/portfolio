@@ -179,7 +179,7 @@ const Index = () => {
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} disableGlitch />
-          <LeetCodeCard className="h-full" />
+          <LeetCodeCard className="h-full flex flex-col" />
         </div>
 
         {/* Footer */}
