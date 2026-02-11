@@ -34,7 +34,7 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
     setTimeout(() => {
       setActiveIndex(null);
       setClosing(false);
-    }, 250);
+    }, 300);
   };
 
   const goNext = () => {
@@ -82,10 +82,10 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
       {/* Detail modal */}
       {item && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm ${closing ? "animate-fade-out" : "animate-fade-in"}`}
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm ${closing ? "animate-modal-overlay-out" : "animate-modal-overlay-in"}`}
         >
           <div
-            className={`relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm ${closing ? "animate-scale-out" : "animate-scale-in"}`}
+            className={`relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm ${closing ? "animate-modal-content-out" : "animate-modal-content-in"}`}
           >
             {/* Fixed header */}
             <div className="flex-shrink-0 p-8 pb-0">
