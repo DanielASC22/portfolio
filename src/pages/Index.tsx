@@ -78,6 +78,7 @@ const projectItems: SectionItem[] = [
   {
     title: "DeisHacks — Website Revamp",
     description: 'Led a 48-hour hackathon sprint revamping the Charles River Museum of Industry & Innovation\'s website as Lead Product Developer. Won "Best Non-Technical Hack."',
+    image: deishacksWin,
     link: { text: "View on Devpost →", url: "https://devpost.com/software/askdjaskd" },
   },
   {
