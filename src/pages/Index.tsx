@@ -9,11 +9,12 @@ const HELLO_PHRASES = [
   "Bonjour",
   "Hallo",
   "Ciao",
-  "你好",
-  "こんにちは",
-  "안녕하세요",
-  "مرحبا",
+  "Ni hao",
+  "Konnichiwa",
+  "Annyeonghaseyo",
+  "Marhaba",
   "Ẹ n lẹ",
+  "As-salamu alaykum",
 ];
 
 const Index = () => {
