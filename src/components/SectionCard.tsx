@@ -13,6 +13,7 @@ export interface SectionItem {
 interface SectionCardProps {
   title: string;
   items: SectionItem[];
+  disableGlitch?: boolean;
 }
 
 const SectionCard = ({ title, items }: SectionCardProps) => {
