@@ -117,7 +117,7 @@ const LeetCodeCard = ({ className = "" }: { className?: string }) => {
   const { data, isLoading } = useLeetCodeStats();
   return (
     <div className={`border border-border rounded-sm bg-card overflow-hidden ${className}`}>
-      <div className="px-4 py-3 border-b border-border flex items-center justify-between">
+      <div className="px-4 py-3 border-b border-border flex items-center justify-between flex-shrink-0">
         <span className="text-sm font-medium text-foreground tracking-wide uppercase">LeetCode</span>
         <a
           href="https://leetcode.com/u/persheki/"
@@ -128,7 +128,7 @@ const LeetCodeCard = ({ className = "" }: { className?: string }) => {
           Profile →
         </a>
       </div>
-      <div className="grid grid-cols-4 gap-0 text-center">
+      <div className="grid grid-cols-4 gap-0 text-center flex-1">
         {[
           { label: "Solved", value: data?.totalSolved, color: "text-foreground" },
           { label: "Easy", value: data?.easySolved, color: "text-green-500" },
@@ -179,7 +179,7 @@ const Index = () => {
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} disableGlitch />
-          <LeetCodeCard className="h-full" />
+          <LeetCodeCard className="h-full flex flex-col" />
         </div>
 
         {/* Footer */}
@@ -209,7 +209,7 @@ const Index = () => {
               <Linkedin size={14} />
             </a>
             <a
-              href="https://github.com/olusheki"
+              href="https://github.com/DanielASC22"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -218,7 +218,9 @@ const Index = () => {
               <Github size={14} />
             </a>
             <a
-              href="#"
+              href="/Daniel_Olusheki_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Resume"
             >
