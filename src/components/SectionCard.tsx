@@ -8,6 +8,7 @@ export interface SectionItem {
   bullets?: string[];
   tags?: string[];
   link?: { text: string; url: string };
+  image?: string;
 }
 
 interface SectionCardProps {
