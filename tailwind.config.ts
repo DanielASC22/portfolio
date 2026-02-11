@@ -83,10 +83,30 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "modal-overlay-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "modal-overlay-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        "modal-content-in": {
+          "0%": { opacity: "0", transform: "scale(0.85) translateY(20px)" },
+          "100%": { opacity: "1", transform: "scale(1) translateY(0)" },
+        },
+        "modal-content-out": {
+          "0%": { opacity: "1", transform: "scale(1) translateY(0)" },
+          "100%": { opacity: "0", transform: "scale(0.85) translateY(20px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "modal-overlay-in": "modal-overlay-in 0.35s ease-out forwards",
+        "modal-overlay-out": "modal-overlay-out 0.3s ease-in forwards",
+        "modal-content-in": "modal-content-in 0.4s cubic-bezier(0.16,1,0.3,1) forwards",
+        "modal-content-out": "modal-content-out 0.3s ease-in forwards",
       },
     },
   },
