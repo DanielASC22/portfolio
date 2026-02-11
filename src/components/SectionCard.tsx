@@ -34,7 +34,7 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
     setTimeout(() => {
       setActiveIndex(null);
       setClosing(false);
-    }, 250);
+    }, 300);
   };
 
   const goNext = () => {
