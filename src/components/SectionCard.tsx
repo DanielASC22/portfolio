@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import MonoGlitch from "./MonoGlitch";
 
 export interface SectionItem {
   title: string;
@@ -14,9 +13,10 @@ export interface SectionItem {
 interface SectionCardProps {
   title: string;
   items: SectionItem[];
+  disableGlitch?: boolean;
 }
 
-const SectionCard = ({ title, items }: SectionCardProps) => {
+const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const goNext = () => {
@@ -78,7 +78,7 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
               </div>
 
               <h2 className="text-lg font-semibold tracking-wide mb-4 text-foreground break-words">
-                <MonoGlitch text={item.title} />
+                {item.title}
               </h2>
             </div>
 
@@ -86,13 +86,13 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
             <div className="flex-1 overflow-y-auto px-8 pb-4 min-h-0">
               {item.subtitle && (
                 <p className="text-xs text-muted-foreground mb-4 break-words">
-                  <MonoGlitch text={item.subtitle} />
+                  {item.subtitle}
                 </p>
               )}
 
               {item.description && (
                 <p className="text-xs text-muted-foreground leading-relaxed mb-4 break-words">
-                  <MonoGlitch text={item.description} />
+                  {item.description}
                 </p>
               )}
 
@@ -100,7 +100,7 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
                 <ul className="list-disc list-inside space-y-2 text-xs text-muted-foreground mb-4">
                   {item.bullets.map((bullet, i) => (
                     <li key={i} className="break-words">
-                      <MonoGlitch text={bullet} />
+                      {bullet}
                     </li>
                   ))}
                 </ul>
@@ -110,7 +110,7 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
                 <div className="flex flex-wrap gap-2 mb-4">
                   {item.tags.map((tag) => (
                     <span key={tag} className="px-2 py-1 text-xs border border-border rounded-sm bg-accent/50 whitespace-nowrap">
-                      <MonoGlitch text={tag} />
+                      {tag}
                     </span>
                   ))}
                 </div>
@@ -123,7 +123,7 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
                   rel="noopener noreferrer"
                   className="text-xs text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors inline-block"
                 >
-                  <MonoGlitch text={item.link.text} />
+                  {item.link.text}
                 </a>
               )}
             </div>

@@ -113,10 +113,10 @@ const skillItems: SectionItem[] = [
   },
 ];
 
-const LeetCodeCard = () => {
+const LeetCodeCard = ({ className = "" }: { className?: string }) => {
   const { data, isLoading } = useLeetCodeStats();
   return (
-    <div className="border border-border rounded-sm bg-card overflow-hidden">
+    <div className={`border border-border rounded-sm bg-card overflow-hidden ${className}`}>
       <div className="px-4 py-3 border-b border-border flex items-center justify-between">
         <span className="text-sm font-medium text-foreground tracking-wide uppercase">LeetCode</span>
         <a
@@ -162,7 +162,7 @@ const Index = () => {
             /><span className="text-muted-foreground">,</span>
           </div>
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
-            Daniel Olusheki
+            I'm Daniel Olusheki
           </h1>
         </div>
 
@@ -178,8 +178,10 @@ const Index = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
-          <SectionCard title="Skills" items={skillItems} />
-          <LeetCodeCard />
+          <SectionCard title="Skills" items={skillItems} disableGlitch />
+          <div className="flex flex-col">
+            <LeetCodeCard className="flex-1" />
+          </div>
         </div>
 
         {/* Footer */}
