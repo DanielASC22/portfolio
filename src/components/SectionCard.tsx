@@ -85,6 +85,13 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
 
             {/* Scrollable content area */}
             <div className="flex-1 overflow-y-auto px-8 pb-4 min-h-0">
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-auto rounded-sm border border-border mb-4 object-cover max-h-48"
+                />
+              )}
               {item.subtitle && (
                 <p className="text-xs text-muted-foreground mb-4 break-words">
                   {item.subtitle}
