@@ -62,8 +62,8 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
 
       {/* Detail modal */}
       {item && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm animate-scale-in">
             {/* Fixed header */}
             <div className="flex-shrink-0 p-8 pb-0">
               <button
@@ -80,7 +80,11 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
               </div>
 
               <h2 className="text-lg font-semibold tracking-wide mb-4 text-foreground break-words">
-                {item.title}
+                {!disableGlitch ? (
+                  <MonoGlitch text={item.title} />
+                ) : (
+                  item.title
+                )}
               </h2>
             </div>
 
