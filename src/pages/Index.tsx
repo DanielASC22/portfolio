@@ -209,7 +209,7 @@ const Index = () => {
               <Linkedin size={14} />
             </a>
             <a
-              href="https://github.com/olusheki"
+              href="https://github.com/DanielASC22"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
