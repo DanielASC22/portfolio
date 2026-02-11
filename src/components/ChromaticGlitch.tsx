@@ -1,7 +1,8 @@
 import { useEffect, useRef, useCallback } from "react";
 
+// Space at the beginning so empty/space characters scroll to index 0 (space)
 const MASTER_STRING =
-  "0123456789.,·-•─~+:;=*π'\"\"┐┌┘└┼├┤┴┬│╗╔╝╚╬╠╣╩╦║░▒▓█▄▀▌▐■!?&#$@aàbcdefghijklmnoòpqrstuüvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%()";
+  " 0123456789.,·-•─~+:;=*π'\"\"┐┌┘└┼├┤┴┬│╗╔╝╚╬╠╣╩╦║░▒▓█▄▀▌▐■!?&#$@aàbcdefghijklmnoòpqrstuüvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%()";
 
 const GLITCH_COLORS = [
   "#00ffff",
@@ -48,36 +49,49 @@ const ChromaticGlitch = ({
     queueRef.current.forEach((item) => {
       if (item.delay > 0) {
         item.delay--;
-        const idx = Math.max(0, Math.min(item.currentIdxInMaster, MASTER_STRING.length - 1));
-        const char = MASTER_STRING[idx] === " " ? "&nbsp;" : MASTER_STRING[idx];
-        htmlOutput += char;
+        // Show current character while waiting
+        const char = MASTER_STRING[item.currentIdxInMaster] || " ";
+        if (char === " ") {
+          htmlOutput += " ";
+        } else {
+          htmlOutput += char;
+        }
         allFinished = false;
         return;
       }
 
       if (item.currentIdxInMaster !== item.targetIndex) {
         allFinished = false;
+
         if (item.currentIdxInMaster < item.targetIndex) {
           item.currentIdxInMaster++;
         } else {
           item.currentIdxInMaster--;
         }
-        const color =
-          GLITCH_COLORS[Math.floor(Math.random() * GLITCH_COLORS.length)];
-        const idx = Math.max(0, Math.min(item.currentIdxInMaster, MASTER_STRING.length - 1));
-        const char =
-          MASTER_STRING[idx] === " "
-            ? "&nbsp;"
-            : MASTER_STRING[idx];
-        htmlOutput += `<span style="color:${color}">${char}</span>`;
+
+        const char = MASTER_STRING[item.currentIdxInMaster] || " ";
+        if (char === " ") {
+          htmlOutput += " ";
+        } else {
+          const color =
+            GLITCH_COLORS[Math.floor(Math.random() * GLITCH_COLORS.length)];
+          htmlOutput += `<span style="color:${color}">${char}</span>`;
+        }
       } else {
-        const char =
-          item.targetChar === " " ? "&nbsp;" : item.targetChar;
-        htmlOutput += char;
+        // Finished: render target char
+        if (item.targetChar === " ") {
+          htmlOutput += " ";
+        } else {
+          htmlOutput += item.targetChar;
+        }
       }
     });
 
-    el.innerHTML = htmlOutput;
+    // Trim trailing spaces so surrounding elements (like comma) stay snug
+    const trimmed = htmlOutput.replace(/[ \s]+$/, "");
+    el.innerHTML = trimmed;
+
+    // Store the raw text for next transition
     currentTextRef.current = el.innerText;
 
     if (!allFinished) {
@@ -92,13 +106,16 @@ const ChromaticGlitch = ({
       const startChars = oldText.padEnd(length, " ").split("");
       const endChars = newText.padEnd(length, " ").split("");
 
-      queueRef.current = endChars.map((char, i) => ({
-        targetChar: char,
-        targetIndex: Math.max(0, MASTER_STRING.indexOf(char) === -1 ? 0 : MASTER_STRING.indexOf(char)),
-        currentIdxInMaster: Math.max(0, MASTER_STRING.indexOf(startChars[i]) === -1 ? 0 : MASTER_STRING.indexOf(startChars[i])),
-        isFinished: false,
-        delay: Math.floor(Math.random() * 45),
-      }));
+      queueRef.current = endChars.map((char, i) => {
+        const fromChar = startChars[i];
+        return {
+          targetChar: char,
+          targetIndex: MASTER_STRING.indexOf(char) === -1 ? 0 : MASTER_STRING.indexOf(char),
+          currentIdxInMaster: MASTER_STRING.indexOf(fromChar) === -1 ? 0 : MASTER_STRING.indexOf(fromChar),
+          isFinished: false,
+          delay: Math.floor(Math.random() * 15),
+        };
+      });
 
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
       animate();
