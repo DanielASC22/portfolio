@@ -4,7 +4,11 @@ import MonoGlitch from "./MonoGlitch";
 
 export interface SectionItem {
   title: string;
-  content: React.ReactNode;
+  subtitle?: string;
+  description?: string;
+  bullets?: string[];
+  tags?: string[];
+  link?: { text: string; url: string };
 }
 
 interface SectionCardProps {
@@ -26,6 +30,8 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
       setActiveIndex(activeIndex - 1);
     }
   };
+
+  const item = activeIndex !== null ? items[activeIndex] : null;
 
   return (
     <>
@@ -53,7 +59,7 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
       </div>
 
       {/* Detail modal */}
-      {activeIndex !== null && (
+      {item && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm">
           <div className="relative w-full max-w-2xl mx-6 max-h-[80vh] overflow-y-auto border border-border bg-card p-8 rounded-sm">
             <button
@@ -63,20 +69,65 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Glitch title */}
+            {/* Section label */}
             <div className="mb-1">
               <span className="text-xs text-muted-foreground uppercase tracking-wide">
                 {title}
               </span>
             </div>
-            <h2 className="text-lg font-semibold tracking-wide mb-6 text-foreground">
-              <MonoGlitch text={items[activeIndex].title} />
+
+            {/* Glitch title */}
+            <h2 className="text-lg font-semibold tracking-wide mb-4 text-foreground">
+              <MonoGlitch text={item.title} />
             </h2>
 
-            {/* Content */}
-            <div className="text-sm text-muted-foreground leading-relaxed space-y-4">
-              {items[activeIndex].content}
-            </div>
+            {/* Glitch subtitle */}
+            {item.subtitle && (
+              <p className="text-xs text-muted-foreground mb-4">
+                <MonoGlitch text={item.subtitle} />
+              </p>
+            )}
+
+            {/* Glitch description */}
+            {item.description && (
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                <MonoGlitch text={item.description} />
+              </p>
+            )}
+
+            {/* Glitch bullets */}
+            {item.bullets && item.bullets.length > 0 && (
+              <ul className="list-disc list-inside space-y-2 text-xs text-muted-foreground mb-4">
+                {item.bullets.map((bullet, i) => (
+                  <li key={i}>
+                    <MonoGlitch text={bullet} />
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* Glitch tags */}
+            {item.tags && item.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {item.tags.map((tag) => (
+                  <span key={tag} className="px-2 py-1 text-xs border border-border rounded-sm bg-accent/50">
+                    <MonoGlitch text={tag} />
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Glitch link */}
+            {item.link && (
+              <a
+                href={item.link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors inline-block"
+              >
+                <MonoGlitch text={item.link.text} />
+              </a>
+            )}
 
             {/* Navigation arrows */}
             <div className="flex items-center justify-between mt-8 pt-4 border-t border-border">
@@ -89,7 +140,7 @@ const SectionCard = ({ title, items }: SectionCardProps) => {
                 Prev
               </button>
               <span className="text-xs text-muted-foreground">
-                {activeIndex + 1} / {items.length}
+                {activeIndex! + 1} / {items.length}
               </span>
               <button
                 onClick={goNext}
