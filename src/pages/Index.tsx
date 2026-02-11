@@ -1,5 +1,6 @@
 import ChromaticGlitch from "@/components/ChromaticGlitch";
 import SectionCard from "@/components/SectionCard";
+import { Github, Linkedin, FileText, Mail } from "lucide-react";
 
 const HELLO_PHRASES = [
   "Hello World",
@@ -15,19 +16,18 @@ const Index = () => {
     <div className="flex items-center justify-center min-h-screen bg-background px-8 md:px-16 lg:px-24">
       <div className="w-full max-w-2xl space-y-10">
         {/* Glitch greeting */}
-        <div className="text-2xl md:text-3xl font-light text-foreground">
+        <div className="text-xl md:text-2xl font-light text-foreground">
           <ChromaticGlitch
             phrases={HELLO_PHRASES}
             interval={3500}
-            className="inline-block min-w-[200px]"
-          />
-          <span className="text-muted-foreground">,</span>
+            className="inline"
+          /><span className="text-muted-foreground">,</span>
         </div>
 
         {/* Intro */}
         <div className="space-y-2">
-          <h1 className="text-base md:text-lg font-normal text-foreground leading-relaxed">
-            I'm <span className="font-semibold">Daniel Olusheki</span>
+          <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
+            Daniel Olusheki
           </h1>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
             First-year Computer Science and Biology student at Brandeis
@@ -52,23 +52,51 @@ const Index = () => {
           </SectionCard>
         </div>
 
-        {/* Email */}
-        <div className="pt-2 text-xs text-muted-foreground">
-          <span>Say </span>
-          <ChromaticGlitch
-            phrases={["HELLO WORLD", "GET IN TOUCH", "DROP A LINE"]}
-            interval={4000}
-            className="inline-block text-foreground font-medium"
-          />
-          <span className="block mt-1">
+        {/* Footer links */}
+        <footer className="pt-4 pb-8 space-y-4">
+          <div className="flex items-center gap-5">
             <a
-              href="mailto:daniel@example.com"
+              href="https://linkedin.com/in/olusheki"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="https://github.com/olusheki"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Resume"
+            >
+              <FileText size={18} />
+            </a>
+          </div>
+          <div className="text-xs text-muted-foreground space-y-0.5">
+            <a
+              href="mailto:dolusheki@gmail.com"
               className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
             >
-              daniel@example.com
+              dolusheki@gmail.com
             </a>
-          </span>
-        </div>
+            <span className="mx-2">·</span>
+            <a
+              href="mailto:dolusheki@brandeis.edu"
+              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+            >
+              dolusheki@brandeis.edu
+            </a>
+          </div>
+        </footer>
       </div>
     </div>
   );
