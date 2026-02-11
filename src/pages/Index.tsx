@@ -3,6 +3,7 @@ import SectionCard from "@/components/SectionCard";
 import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Github, Linkedin, FileText } from "lucide-react";
+import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
 
 const HELLO_PHRASES = [
   "Hello",
