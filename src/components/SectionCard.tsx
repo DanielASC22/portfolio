@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import MonoGlitch from "./MonoGlitch";
 
 export interface SectionItem {
   title: string;
