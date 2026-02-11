@@ -16,7 +16,7 @@ interface SectionCardProps {
   disableGlitch?: boolean;
 }
 
-const SectionCard = ({ title, items }: SectionCardProps) => {
+const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const goNext = () => {
