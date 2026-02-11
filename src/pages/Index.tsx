@@ -4,6 +4,7 @@ import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Github, Linkedin, FileText } from "lucide-react";
 import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
+import deishacksWin from "@/assets/deishacks-win.png";
 
 const HELLO_PHRASES = [
   "Hello",
@@ -77,6 +78,7 @@ const projectItems: SectionItem[] = [
   {
     title: "DeisHacks — Website Revamp",
     description: 'Led a 48-hour hackathon sprint revamping the Charles River Museum of Industry & Innovation\'s website as Lead Product Developer. Won "Best Non-Technical Hack."',
+    image: deishacksWin,
     link: { text: "View on Devpost →", url: "https://devpost.com/software/askdjaskd" },
   },
   {
