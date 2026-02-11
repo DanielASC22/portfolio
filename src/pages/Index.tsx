@@ -4,6 +4,7 @@ import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Github, Linkedin, FileText } from "lucide-react";
 import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
+import deishacksWin from "@/assets/deishacks-win.png";
 
 const HELLO_PHRASES = [
   "Hello",
