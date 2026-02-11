@@ -89,7 +89,7 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
             </div>
 
             {/* Scrollable content area */}
-            <div className="flex-1 overflow-y-auto px-8 pb-4 min-h-0">
+            <div key={activeIndex} className="flex-1 overflow-y-auto px-8 pb-4 min-h-0 animate-fade-in">
               {item.image && (
                 <img
                   src={item.image}
