@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import MonoGlitch from "./MonoGlitch";
 
@@ -20,20 +20,39 @@ interface SectionCardProps {
 
 const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [closing, setClosing] = useState(false);
+  const hasNavigatedRef = useRef(false);
+
+  const openModal = (i: number) => {
+    hasNavigatedRef.current = false;
+    setActiveIndex(i);
+    setClosing(false);
+  };
+
+  const closeModal = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setActiveIndex(null);
+      setClosing(false);
+    }, 250);
+  };
 
   const goNext = () => {
     if (activeIndex !== null && activeIndex < items.length - 1) {
+      hasNavigatedRef.current = true;
       setActiveIndex(activeIndex + 1);
     }
   };
 
   const goPrev = () => {
     if (activeIndex !== null && activeIndex > 0) {
+      hasNavigatedRef.current = true;
       setActiveIndex(activeIndex - 1);
     }
   };
 
   const item = activeIndex !== null ? items[activeIndex] : null;
+  const useGlitch = !disableGlitch && hasNavigatedRef.current;
 
   return (
     <>
@@ -48,7 +67,7 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
           {items.map((item, i) => (
             <button
               key={i}
-              onClick={() => setActiveIndex(i)}
+              onClick={() => openModal(i)}
               className="group flex items-center justify-between w-full px-4 py-2.5 hover:bg-accent transition-colors text-left border-b border-border last:border-b-0"
             >
               <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors truncate">
@@ -62,12 +81,16 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
 
       {/* Detail modal */}
       {item && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm animate-fade-in">
-          <div className="relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm animate-scale-in">
+        <div
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm ${closing ? "animate-fade-out" : "animate-fade-in"}`}
+        >
+          <div
+            className={`relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm ${closing ? "animate-scale-out" : "animate-scale-in"}`}
+          >
             {/* Fixed header */}
             <div className="flex-shrink-0 p-8 pb-0">
               <button
-                onClick={() => setActiveIndex(null)}
+                onClick={closeModal}
                 className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <X className="w-5 h-5" />
@@ -80,7 +103,7 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
               </div>
 
               <h2 className="text-lg font-semibold tracking-wide mb-4 text-foreground break-words">
-                {!disableGlitch ? (
+                {useGlitch ? (
                   <MonoGlitch text={item.title} />
                 ) : (
                   item.title
