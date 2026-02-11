@@ -179,37 +179,40 @@ const skillItems: SectionItem[] = [
   },
 ];
 
-const LeetCodeContent = () => {
+const LeetCodeCard = () => {
   const { data, isLoading } = useLeetCodeStats();
   return (
-    <div className="space-y-4">
-      <p className="text-xs">Tracking my progress on algorithmic problem solving.</p>
-      <div className="grid grid-cols-4 gap-3 text-center">
+    <div className="border border-border rounded-sm bg-card overflow-hidden">
+      <div className="px-4 py-3 border-b border-border flex items-center justify-between">
+        <span className="text-sm font-medium text-foreground tracking-wide uppercase">LeetCode</span>
+        <a
+          href="https://leetcode.com/u/persheki/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Profile →
+        </a>
+      </div>
+      <div className="grid grid-cols-4 gap-0 text-center">
         {[
-          { label: "Solved", value: data?.totalSolved },
-          { label: "Easy", value: data?.easySolved },
-          { label: "Medium", value: data?.mediumSolved },
-          { label: "Hard", value: data?.hardSolved },
-        ].map(({ label, value }) => (
-          <div key={label} className="border border-border rounded-sm p-3">
-            <p className="text-lg font-semibold text-foreground">
+          { label: "Solved", value: data?.totalSolved, color: "text-foreground" },
+          { label: "Easy", value: data?.easySolved, color: "text-green-500" },
+          { label: "Medium", value: data?.mediumSolved, color: "text-yellow-500" },
+          { label: "Hard", value: data?.hardSolved, color: "text-red-500" },
+        ].map(({ label, value, color }) => (
+          <div key={label} className="py-3 border-r border-border last:border-r-0">
+            <p className={`text-lg font-semibold ${color}`}>
               {isLoading ? "…" : (value ?? "—")}
             </p>
             <p className="text-xs text-muted-foreground">{label}</p>
           </div>
         ))}
       </div>
-      <a
-        href="https://leetcode.com/u/persheki/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-xs text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors inline-block"
-      >
-        View full profile →
-      </a>
     </div>
   );
 };
+
 
 const Index = () => {
   return (
