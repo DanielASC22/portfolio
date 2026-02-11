@@ -3,6 +3,7 @@ import SectionCard from "@/components/SectionCard";
 import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Github, Linkedin, FileText } from "lucide-react";
+import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
 
 const HELLO_PHRASES = [
   "Hello",
@@ -178,38 +179,37 @@ const skillItems: SectionItem[] = [
   },
 ];
 
-const leetcodeItems: SectionItem[] = [
-  {
-    title: "LeetCode Stats",
-    content: (
-      <div className="space-y-4">
-        <p className="text-xs">Tracking my progress on algorithmic problem solving.</p>
-        <div className="grid grid-cols-3 gap-3 text-center">
-          <div className="border border-border rounded-sm p-3">
-            <p className="text-lg font-semibold text-foreground">—</p>
-            <p className="text-xs text-muted-foreground">Solved</p>
+const LeetCodeContent = () => {
+  const { data, isLoading } = useLeetCodeStats();
+  return (
+    <div className="space-y-4">
+      <p className="text-xs">Tracking my progress on algorithmic problem solving.</p>
+      <div className="grid grid-cols-4 gap-3 text-center">
+        {[
+          { label: "Solved", value: data?.totalSolved },
+          { label: "Easy", value: data?.easySolved },
+          { label: "Medium", value: data?.mediumSolved },
+          { label: "Hard", value: data?.hardSolved },
+        ].map(({ label, value }) => (
+          <div key={label} className="border border-border rounded-sm p-3">
+            <p className="text-lg font-semibold text-foreground">
+              {isLoading ? "…" : (value ?? "—")}
+            </p>
+            <p className="text-xs text-muted-foreground">{label}</p>
           </div>
-          <div className="border border-border rounded-sm p-3">
-            <p className="text-lg font-semibold text-foreground">—</p>
-            <p className="text-xs text-muted-foreground">Easy</p>
-          </div>
-          <div className="border border-border rounded-sm p-3">
-            <p className="text-lg font-semibold text-foreground">—</p>
-            <p className="text-xs text-muted-foreground">Medium</p>
-          </div>
-        </div>
-        <a
-          href="https://leetcode.com/u/persheki/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors inline-block"
-        >
-          View full profile →
-        </a>
+        ))}
       </div>
-    ),
-  },
-];
+      <a
+        href="https://leetcode.com/u/persheki/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors inline-block"
+      >
+        View full profile →
+      </a>
+    </div>
+  );
+};
 
 const Index = () => {
   return (
@@ -242,7 +242,7 @@ const Index = () => {
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} />
-          <SectionCard title="LeetCode" items={leetcodeItems} />
+          <SectionCard title="LeetCode" items={[{ title: "LeetCode Stats", content: <LeetCodeContent /> }]} />
         </div>
 
         {/* Footer */}
