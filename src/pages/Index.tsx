@@ -26,7 +26,7 @@ const Index = () => {
           <div className="text-xl md:text-2xl font-light text-foreground">
             <ChromaticGlitch
               phrases={HELLO_PHRASES}
-              interval={3500}
+              interval={5000}
               className="inline"
             /><span className="text-muted-foreground">,</span>
           </div>
