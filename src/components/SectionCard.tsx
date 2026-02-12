@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import MonoGlitch from "./MonoGlitch";
 
