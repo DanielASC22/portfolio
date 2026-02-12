@@ -203,18 +203,20 @@ const Index = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background px-8 md:px-16 lg:px-24 py-16">
       <div className="w-full max-w-4xl space-y-5">
-        {/* Glitch greeting + name */}
-        <div className="space-y-1">
-          <div className="text-xl md:text-2xl font-light text-foreground">
-            <ChromaticGlitch
-              phrases={HELLO_PHRASES}
-              interval={5000}
-              className="inline"
-            /><span className="text-muted-foreground">,</span>
+        <div className="flex items-start justify-between">
+          <div className="space-y-1">
+            <div className="text-xl md:text-2xl font-light text-foreground">
+              <ChromaticGlitch
+                phrases={HELLO_PHRASES}
+                interval={5000}
+                className="inline"
+              /><span className="text-muted-foreground">,</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
+              I'm Daniel Olusheki
+            </h1>
           </div>
-          <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
-            I'm Daniel Olusheki
-          </h1>
+          <ClockLocation />
         </div>
 
         {/* Bio */}
