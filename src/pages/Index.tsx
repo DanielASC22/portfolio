@@ -2,7 +2,8 @@ import ChromaticGlitch from "@/components/ChromaticGlitch";
 import SectionCard from "@/components/SectionCard";
 import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Github, Linkedin, FileText } from "lucide-react";
+import { Github, Linkedin, FileText, MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
 import deishacksWin from "@/assets/deishacks-win.png";
 
@@ -134,6 +135,35 @@ const aboutItems: SectionItem[] = [
   },
 ];
 
+const ClockLocation = () => {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          timeZone: "America/New_York",
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        })
+      );
+    };
+    update();
+    const id = setInterval(update, 10000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+      <MapPin size={12} />
+      <span>NYC / BOS</span>
+      <span className="text-border">·</span>
+      <span>{time} EST</span>
+    </div>
+  );
+};
+
 const LeetCodeCard = ({ className = "" }: { className?: string }) => {
   const { data, isLoading } = useLeetCodeStats();
   return (
@@ -173,18 +203,20 @@ const Index = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background px-8 md:px-16 lg:px-24 py-16">
       <div className="w-full max-w-4xl space-y-5">
-        {/* Glitch greeting + name */}
-        <div className="space-y-1">
-          <div className="text-xl md:text-2xl font-light text-foreground">
-            <ChromaticGlitch
-              phrases={HELLO_PHRASES}
-              interval={5000}
-              className="inline"
-            /><span className="text-muted-foreground">,</span>
+        <div className="flex items-start justify-between">
+          <div className="space-y-1">
+            <div className="text-xl md:text-2xl font-light text-foreground">
+              <ChromaticGlitch
+                phrases={HELLO_PHRASES}
+                interval={5000}
+                className="inline"
+              /><span className="text-muted-foreground">,</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
+              I'm Daniel Olusheki
+            </h1>
           </div>
-          <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
-            I'm Daniel Olusheki
-          </h1>
+          <ClockLocation />
         </div>
 
         {/* Bio */}
