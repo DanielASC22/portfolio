@@ -4,6 +4,7 @@ import MonoGlitch from "./MonoGlitch";
 
 export interface SectionItem {
   title: string;
+  modalTitle?: string;
   subtitle?: string;
   description?: string;
   bullets?: string[];
@@ -123,9 +124,9 @@ const SectionCard = ({ title, items, disableGlitch, badge }: SectionCardProps) =
 
               <h2 className="text-lg font-semibold tracking-wide mb-4 text-foreground break-words">
                 {useGlitch ? (
-                  <MonoGlitch text={item.title} />
+                  <MonoGlitch text={item.modalTitle || item.title} />
                 ) : (
-                  item.title
+                  item.modalTitle || item.title
                 )}
               </h2>
             </div>
