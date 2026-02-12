@@ -63,7 +63,7 @@ const ChromaticGlitch = ({
       if (item.currentIdxInMaster !== item.targetIndex) {
         allFinished = false;
 
-        const step = 3;
+        const step = 2;
         if (item.currentIdxInMaster < item.targetIndex) {
           item.currentIdxInMaster = Math.min(item.currentIdxInMaster + step, item.targetIndex);
         } else {
@@ -114,7 +114,7 @@ const ChromaticGlitch = ({
           targetIndex: MASTER_STRING.indexOf(char) === -1 ? 0 : MASTER_STRING.indexOf(char),
           currentIdxInMaster: MASTER_STRING.indexOf(fromChar) === -1 ? 0 : MASTER_STRING.indexOf(fromChar),
           isFinished: false,
-          delay: Math.floor(Math.random() * 6),
+          delay: Math.floor(Math.random() * 10),
         };
       });
 
