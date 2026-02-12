@@ -172,7 +172,7 @@ const LeetCodeCard = ({ className = "" }: { className?: string }) => {
 const Index = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background px-8 md:px-16 lg:px-24 py-16">
-      <div className="w-full max-w-2xl space-y-5">
+      <div className="w-full max-w-4xl space-y-5">
         {/* Glitch greeting + name */}
         <div className="space-y-1">
           <div className="text-xl md:text-2xl font-light text-foreground">
