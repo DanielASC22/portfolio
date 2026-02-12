@@ -97,6 +97,7 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
           onClick={closeModal}
         >
           <div
+            onClick={e => e.stopPropagation()}
             className={`relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm ${closing ? "animate-modal-content-out" : "animate-modal-content-in"}`}
           >
             {/* Fixed header */}
