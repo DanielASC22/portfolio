@@ -11,8 +11,8 @@ const HELLO_PHRASES = [
   "Hello",
   "Hola",
   "Bonjour",
-  "Hallo",
-  "Ciao",
+  "Namaste",
+  "Guten Tag",
   "Ni hao",
   "Konnichiwa",
   "Annyeonghaseyo",
@@ -78,26 +78,31 @@ const experienceItems: SectionItem[] = [
 const projectItems: SectionItem[] = [
   {
     title: "DeisHacks — Website Revamp",
-    description: 'Led a 48-hour hackathon sprint revamping the Charles River Museum of Industry & Innovation\'s website as Lead Product Developer. Won "Best Non-Technical Hack."',
+    description:
+      'Led a 48-hour hackathon sprint revamping the Charles River Museum of Industry & Innovation\'s website as Lead Product Developer. Won "Best Non-Technical Hack."',
     image: deishacksWin,
     link: { text: "View on Devpost →", url: "https://devpost.com/software/askdjaskd" },
   },
   {
     title: "ShareService",
-    description: "Full-stack volunteering accessibility website built at All Star Code. An audience member donated $100 to a featured organization after the demo.",
+    description:
+      "Full-stack volunteering accessibility website built at All Star Code. An audience member donated $100 to a featured organization after the demo.",
     link: { text: "View project →", url: "https://danielasc22.github.io/ShareService/" },
   },
   {
     title: "Mass Shootings in America",
-    description: "Data visualization project aiming to reveal patterns in mass shooting data to explore potential solutions.",
+    description:
+      "Data visualization project aiming to reveal patterns in mass shooting data to explore potential solutions.",
   },
   {
     title: "Brand New School Gallery",
-    description: "Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.",
+    description:
+      "Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.",
   },
   {
     title: "Drawing in Distortion",
-    description: "An exploration of 5-point perspective, experimenting with a unique way of viewing and representing life through distortion.",
+    description:
+      "An exploration of 5-point perspective, experimenting with a unique way of viewing and representing life through distortion.",
   },
 ];
 
@@ -112,7 +117,14 @@ const skillItems: SectionItem[] = [
   },
   {
     title: "Other",
-    tags: ["Creative Direction", "Visual Storytelling", "Debugging", "Web Development", "Game Design", "Presentation Skills"],
+    tags: [
+      "Creative Direction",
+      "Visual Storytelling",
+      "Debugging",
+      "Web Development",
+      "Game Design",
+      "Presentation Skills",
+    ],
   },
 ];
 
@@ -146,7 +158,7 @@ const ClockLocation = () => {
           hour: "numeric",
           minute: "2-digit",
           hour12: true,
-        })
+        }),
       );
     };
     update();
@@ -187,9 +199,7 @@ const LeetCodeCard = ({ className = "" }: { className?: string }) => {
           { label: "Hard", value: data?.hardSolved, color: "text-red-500" },
         ].map(({ label, value, color }) => (
           <div key={label} className="py-3 border-r border-border last:border-r-0">
-            <p className={`text-lg font-semibold ${color}`}>
-              {isLoading ? "…" : (value ?? "—")}
-            </p>
+            <p className={`text-lg font-semibold ${color}`}>{isLoading ? "…" : (value ?? "—")}</p>
             <p className="text-xs text-muted-foreground">{label}</p>
           </div>
         ))}
@@ -198,7 +208,6 @@ const LeetCodeCard = ({ className = "" }: { className?: string }) => {
   );
 };
 
-
 const Index = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background px-8 md:px-16 lg:px-24 py-16">
@@ -206,25 +215,18 @@ const Index = () => {
         <div className="flex items-start justify-between">
           <div className="space-y-1">
             <div className="text-xl md:text-2xl font-light text-foreground">
-              <ChromaticGlitch
-                phrases={HELLO_PHRASES}
-                interval={5000}
-                className="inline"
-              /><span className="text-muted-foreground">,</span>
+              <ChromaticGlitch phrases={HELLO_PHRASES} interval={5000} className="inline" />
+              <span className="text-muted-foreground">,</span>
             </div>
-            <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">
-              I'm Daniel Olusheki
-            </h1>
+            <h1 className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed">I'm Daniel Olusheki</h1>
           </div>
           <ClockLocation />
         </div>
 
         {/* Bio */}
         <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-          First-year Computer Science and Biology student at Brandeis
-          University. STEM Posse Scholar, Oliver Scholar, and Dean's List
-          recipient. Passionate about solving complex problems through creative
-          and analytical thinking.
+          First-year Computer Science and Biology student at Brandeis University. STEM Posse Scholar, Oliver Scholar,
+          and Dean's List recipient. Passionate about solving complex problems through creative and analytical thinking.
         </p>
 
         {/* Section cards */}
