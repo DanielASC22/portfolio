@@ -136,7 +136,7 @@ const SectionCard = ({ title, items, disableGlitch, badge }: SectionCardProps) =
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-auto rounded-sm border border-border mb-4 object-cover max-h-48"
+                  className="w-full h-auto rounded-sm border border-border mb-4"
                 />
               )}
               {item.subtitle && (
