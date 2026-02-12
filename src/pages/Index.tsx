@@ -206,15 +206,15 @@ const Index = () => {
         </div>
 
         {/* Footer */}
-        <footer className="pt-4 pb-8 flex items-center justify-between">
-          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+        <footer className="pt-4 pb-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-muted-foreground">
             <a
               href="mailto:dolusheki@gmail.com"
               className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
             >
               dolusheki@gmail.com
             </a>
-            <span>·</span>
+            <span className="hidden sm:inline">·</span>
             <a
               href="mailto:dolusheki@brandeis.edu"
               className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
@@ -222,33 +222,35 @@ const Index = () => {
               dolusheki@brandeis.edu
             </a>
             <span>·</span>
-            <a
-              href="https://linkedin.com/in/olusheki"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={14} />
-            </a>
-            <a
-              href="https://github.com/DanielASC22"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="GitHub"
-            >
-              <Github size={14} />
-            </a>
-            <a
-              href="/Daniel_Olusheki_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Resume"
-            >
-              <FileText size={14} />
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://linkedin.com/in/olusheki"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={14} />
+              </a>
+              <a
+                href="https://github.com/DanielASC22"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="GitHub"
+              >
+                <Github size={14} />
+              </a>
+              <a
+                href="/Daniel_Olusheki_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Resume"
+              >
+                <FileText size={14} />
+              </a>
+            </div>
           </div>
           <ThemeToggle />
         </footer>
