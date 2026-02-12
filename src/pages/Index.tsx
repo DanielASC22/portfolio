@@ -196,11 +196,13 @@ const Index = () => {
         </p>
 
         {/* Section cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:grid-rows-[auto_1fr]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} disableGlitch />
+          <SectionCard title="Courses" items={courseItems} disableGlitch />
           <LeetCodeCard className="h-full flex flex-col" />
+          <SectionCard title="About Me" items={aboutItems} disableGlitch />
         </div>
 
         {/* Footer */}
