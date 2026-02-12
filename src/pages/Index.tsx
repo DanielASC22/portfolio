@@ -135,6 +135,35 @@ const aboutItems: SectionItem[] = [
   },
 ];
 
+const ClockLocation = () => {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          timeZone: "America/New_York",
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        })
+      );
+    };
+    update();
+    const id = setInterval(update, 10000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+      <MapPin size={12} />
+      <span>NYC / BOS</span>
+      <span className="text-border">·</span>
+      <span>{time} EST</span>
+    </div>
+  );
+};
+
 const LeetCodeCard = ({ className = "" }: { className?: string }) => {
   const { data, isLoading } = useLeetCodeStats();
   return (
