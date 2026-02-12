@@ -141,7 +141,7 @@ const courseItems: SectionItem[] = [
 
 const aboutItems: SectionItem[] = [
   {
-    title: "About Me",
+    title: "Click here for more info",
     description:
       "I'm driven by curiosity at the intersection of computer science and biology — from building computational tools for lab research to crafting creative digital experiences. Outside of academics, I love experimenting with generative art, exploring new cities, and finding ways technology can make a tangible difference. I thrive when collaborating on projects that blend analytical rigor with creative expression.",
   },
@@ -234,7 +234,7 @@ const Index = () => {
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} disableGlitch />
-          <SectionCard title="Courses" items={courseItems} disableGlitch />
+          <SectionCard title="Courses" items={courseItems} disableGlitch badge="4.00 GPA" />
           <LeetCodeCard className="h-full flex flex-col" />
           <SectionCard title="About Me" items={aboutItems} disableGlitch />
         </div>
