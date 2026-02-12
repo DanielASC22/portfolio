@@ -171,8 +171,8 @@ const LeetCodeCard = ({ className = "" }: { className?: string }) => {
 
 const Index = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background px-8 md:px-16 lg:px-24">
-      <div className="w-full max-w-2xl space-y-5">
+    <div className="flex items-center justify-center min-h-screen bg-background px-8 md:px-16 lg:px-24 py-16">
+      <div className="w-full max-w-4xl space-y-5">
         {/* Glitch greeting + name */}
         <div className="space-y-1">
           <div className="text-xl md:text-2xl font-light text-foreground">
@@ -196,7 +196,7 @@ const Index = () => {
         </p>
 
         {/* Section cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} disableGlitch />
