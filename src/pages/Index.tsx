@@ -196,7 +196,7 @@ const Index = () => {
         </p>
 
         {/* Section cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} disableGlitch />
