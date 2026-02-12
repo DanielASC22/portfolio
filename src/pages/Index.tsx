@@ -2,7 +2,8 @@ import ChromaticGlitch from "@/components/ChromaticGlitch";
 import SectionCard from "@/components/SectionCard";
 import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Github, Linkedin, FileText } from "lucide-react";
+import { Github, Linkedin, FileText, MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
 import deishacksWin from "@/assets/deishacks-win.png";
 
