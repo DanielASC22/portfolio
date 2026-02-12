@@ -16,9 +16,10 @@ interface SectionCardProps {
   title: string;
   items: SectionItem[];
   disableGlitch?: boolean;
+  badge?: string;
 }
 
-const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
+const SectionCard = ({ title, items, disableGlitch, badge }: SectionCardProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [closing, setClosing] = useState(false);
   const hasNavigatedRef = useRef(false);
@@ -69,10 +70,15 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
     <>
       {/* Card with scrollable preview */}
       <div className="border border-border rounded-sm bg-card overflow-hidden">
-        <div className="px-4 py-3 border-b border-border">
+        <div className="px-4 py-3 border-b border-border flex items-center gap-2">
           <span className="text-sm font-medium text-foreground tracking-wide uppercase">
             {title}
           </span>
+          {badge && (
+            <span className="px-1.5 py-0.5 text-[10px] font-medium border border-border rounded-sm bg-accent/50 text-muted-foreground">
+              {badge}
+            </span>
+          )}
         </div>
         <div className="max-h-[120px] overflow-y-auto">
           {items.map((item, i) => (
