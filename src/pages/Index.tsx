@@ -142,7 +142,7 @@ const courseItems: SectionItem[] = [
 const aboutItems: SectionItem[] = [
   {
     title: "Click here for more info",
-    modalTitle: "About Me",
+    modalTitle: "My Story",
     description:
       "I'm driven by curiosity at the intersection of computer science and biology — from building computational tools for lab research to crafting creative digital experiences. Outside of academics, I love experimenting with generative art, exploring new cities, and finding ways technology can make a tangible difference. I thrive when collaborating on projects that blend analytical rigor with creative expression.",
   },
