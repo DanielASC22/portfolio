@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import MonoGlitch from "./MonoGlitch";
 
@@ -54,6 +54,17 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
   const item = activeIndex !== null ? items[activeIndex] : null;
   const useGlitch = !disableGlitch && hasNavigatedRef.current;
 
+  useEffect(() => {
+    if (activeIndex === null) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [activeIndex, items.length]);
+
   return (
     <>
       {/* Card with scrollable preview */}
@@ -83,8 +94,10 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
       {item && (
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm ${closing ? "animate-modal-overlay-out" : "animate-modal-overlay-in"}`}
+          onClick={closeModal}
         >
           <div
+            onClick={e => e.stopPropagation()}
             className={`relative w-full max-w-2xl mx-6 h-[70vh] flex flex-col border border-border bg-card rounded-sm ${closing ? "animate-modal-content-out" : "animate-modal-content-in"}`}
           >
             {/* Fixed header */}

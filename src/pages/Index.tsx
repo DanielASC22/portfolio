@@ -103,15 +103,34 @@ const projectItems: SectionItem[] = [
 const skillItems: SectionItem[] = [
   {
     title: "Languages & Frameworks",
-    tags: ["JavaScript", "React.js", "HTML", "CSS", "TypeScript"],
+    tags: ["JavaScript", "Python", "React.js", "HTML", "CSS", "TypeScript"],
   },
   {
     title: "Tools & Platforms",
-    tags: ["GitHub", "Houdini", "After Effects", "Thunkable", "Mantra"],
+    tags: ["GitHub", "Git", "Napari", "Houdini", "After Effects", "Figma", "Thunkable", "Mantra"],
   },
   {
     title: "Other",
     tags: ["Creative Direction", "Visual Storytelling", "Debugging", "Web Development", "Game Design", "Presentation Skills"],
+  },
+];
+
+const courseItems: SectionItem[] = [
+  {
+    title: "Computer Science",
+    tags: ["Intro to Computer Science", "Data Structures & Algorithms", "Discrete Math"],
+  },
+  {
+    title: "Biology",
+    tags: ["Intro to Biology", "Molecular Biology", "Genetics"],
+  },
+];
+
+const aboutItems: SectionItem[] = [
+  {
+    title: "About Me",
+    description:
+      "I'm driven by curiosity at the intersection of computer science and biology — from building computational tools for lab research to crafting creative digital experiences. Outside of academics, I love experimenting with generative art, exploring new cities, and finding ways technology can make a tangible difference. I thrive when collaborating on projects that blend analytical rigor with creative expression.",
   },
 ];
 
@@ -177,11 +196,13 @@ const Index = () => {
         </p>
 
         {/* Section cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:grid-rows-[auto_1fr]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <SectionCard title="Experience" items={experienceItems} />
           <SectionCard title="Projects" items={projectItems} />
           <SectionCard title="Skills" items={skillItems} disableGlitch />
+          <SectionCard title="Courses" items={courseItems} disableGlitch />
           <LeetCodeCard className="h-full flex flex-col" />
+          <SectionCard title="About Me" items={aboutItems} disableGlitch />
         </div>
 
         {/* Footer */}
