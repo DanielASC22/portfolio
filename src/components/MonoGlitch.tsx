@@ -44,10 +44,11 @@ const MonoGlitch = ({
 
       if (item.currentIdxInMaster !== item.targetIndex) {
         allFinished = false;
+        const step = 2;
         if (item.currentIdxInMaster < item.targetIndex) {
-          item.currentIdxInMaster++;
+          item.currentIdxInMaster = Math.min(item.currentIdxInMaster + step, item.targetIndex);
         } else {
-          item.currentIdxInMaster--;
+          item.currentIdxInMaster = Math.max(item.currentIdxInMaster - step, item.targetIndex);
         }
         const char = MASTER_STRING[item.currentIdxInMaster] || " ";
         output += char === " " ? "\u00A0" : char;
@@ -80,7 +81,7 @@ const MonoGlitch = ({
           MASTER_STRING.indexOf(fromChar) === -1
             ? 0
             : MASTER_STRING.indexOf(fromChar),
-        delay: Math.floor(Math.random() * 15),
+        delay: Math.floor(Math.random() * 10),
       };
     });
 
