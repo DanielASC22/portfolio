@@ -54,6 +54,17 @@ const SectionCard = ({ title, items, disableGlitch }: SectionCardProps) => {
   const item = activeIndex !== null ? items[activeIndex] : null;
   const useGlitch = !disableGlitch && hasNavigatedRef.current;
 
+  useEffect(() => {
+    if (activeIndex === null) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [activeIndex, items.length]);
+
   return (
     <>
       {/* Card with scrollable preview */}
