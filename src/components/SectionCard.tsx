@@ -11,6 +11,8 @@ export interface SectionItem {
   tags?: string[];
   link?: { text: string; url: string };
   image?: string;
+  images?: string[];
+  video?: string;
 }
 
 interface SectionCardProps {
@@ -19,6 +21,52 @@ interface SectionCardProps {
   disableGlitch?: boolean;
   badge?: string;
 }
+
+const ImageCarousel = ({ images, title }: { images: string[]; title: string }) => {
+  const [current, setCurrent] = useState(0);
+  return (
+    <div className="mb-4">
+      <div className="relative rounded-sm border border-border overflow-hidden">
+        <img
+          src={images[current]}
+          alt={`${title} - slide ${current + 1}`}
+          className="w-full h-auto"
+        />
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={() => setCurrent((c) => Math.max(0, c - 1))}
+              disabled={current === 0}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border rounded-full p-1.5 text-foreground hover:bg-background transition-colors disabled:opacity-25 disabled:cursor-not-allowed"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={() => setCurrent((c) => Math.min(images.length - 1, c + 1))}
+              disabled={current === images.length - 1}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border rounded-full p-1.5 text-foreground hover:bg-background transition-colors disabled:opacity-25 disabled:cursor-not-allowed"
+            >
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </>
+        )}
+      </div>
+      {images.length > 1 && (
+        <div className="flex items-center justify-center gap-1.5 mt-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                i === current ? "bg-foreground" : "bg-muted-foreground/30"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const SectionCard = ({ title, items, disableGlitch, badge }: SectionCardProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -133,7 +181,23 @@ const SectionCard = ({ title, items, disableGlitch, badge }: SectionCardProps) =
 
             {/* Scrollable content area */}
             <div key={activeIndex} className="flex-1 overflow-y-auto px-8 pb-4 min-h-0 animate-fade-in">
-              {item.image && (
+              {item.video && (
+                <div className="relative w-full aspect-video mb-4 rounded-sm overflow-hidden border border-border">
+                  <iframe
+                    src={item.video.replace("youtu.be/", "youtube.com/embed/").replace("watch?v=", "embed/")}
+                    title={item.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              )}
+
+              {item.images && item.images.length > 0 && (
+                <ImageCarousel images={item.images} title={item.title} />
+              )}
+
+              {item.image && !item.images && (
                 <img
                   src={item.image}
                   alt={item.title}
