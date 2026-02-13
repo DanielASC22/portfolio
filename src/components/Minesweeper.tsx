@@ -137,7 +137,7 @@ const Minesweeper = () => {
   const iconSize = isHard ? 10 : 12;
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="relative flex flex-col items-center gap-3">
       {/* Difficulty selector */}
       <div className="flex gap-1">
         {(["small", "medium", "hard"] as Difficulty[]).map((d) => (
@@ -179,9 +179,9 @@ const Minesweeper = () => {
               className={`${cellSize} border border-border/40 flex items-center justify-center font-bold leading-none transition-colors ${
                 cell.revealed
                   ? cell.mine
-                    ? "bg-destructive/15"
-                    : "bg-muted"
-                  : "bg-card hover:bg-accent/50 cursor-pointer"
+                    ? "bg-destructive/20"
+                    : "bg-background"
+                  : "bg-muted-foreground/15 hover:bg-muted-foreground/25 cursor-pointer"
               }`}
               onClick={() => handleClick(r, c)}
               onContextMenu={(e) => handleRightClick(e, r, c)}
@@ -200,15 +200,17 @@ const Minesweeper = () => {
         )}
       </div>
 
-      {status === "won" && (
-        <p className="text-xs text-muted-foreground font-medium flex items-center gap-1">
-          <PartyPopper size={12} /> You won!
-        </p>
-      )}
-      {status === "lost" && (
-        <p className="text-xs text-muted-foreground font-medium flex items-center gap-1">
-          <Frown size={12} /> Game over
-        </p>
+      {(status === "won" || status === "lost") && (
+        <div className="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-sm z-10 rounded-sm">
+          <div className="border border-border bg-card px-6 py-4 rounded-sm text-center space-y-2">
+            <p className="text-sm font-medium text-foreground flex items-center justify-center gap-1.5">
+              {status === "won" ? <><PartyPopper size={14} /> You won!</> : <><Frown size={14} /> Game over</>}
+            </p>
+            <button onClick={reset} className="text-xs text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4">
+              Play again
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
