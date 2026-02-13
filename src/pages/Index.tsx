@@ -12,6 +12,10 @@ const distortionSlides = Object.values(
   import.meta.glob("@/assets/distortion/slide-*.jpg", { eager: true, import: "default" })
 ) as string[];
 
+const bnsGallerySlides = Object.values(
+  import.meta.glob("@/assets/bns-gallery/slide-*.jpg", { eager: true, import: "default" })
+) as string[];
+
 const HELLO_PHRASES = [
   "Hello",
   "Hola",
@@ -105,6 +109,7 @@ const projectItems: SectionItem[] = [
     description:
       "Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.",
     video: "https://youtu.be/y2omaIYksDk",
+    images: bnsGallerySlides,
   },
   {
     title: "Drawing in Distortion",
