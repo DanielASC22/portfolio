@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
+import { Bomb, Flag, Smile, Frown, PartyPopper } from "lucide-react";
 
 type Difficulty = "small" | "medium" | "hard";
 
@@ -22,7 +23,6 @@ const createBoard = (rows: number, cols: number, mines: number, firstR?: number,
     Array.from({ length: cols }, () => ({ mine: false, revealed: false, flagged: false, adjacent: 0 }))
   );
 
-  // Place mines avoiding first click
   let placed = 0;
   while (placed < mines) {
     const r = Math.floor(Math.random() * rows);
@@ -33,7 +33,6 @@ const createBoard = (rows: number, cols: number, mines: number, firstR?: number,
     placed++;
   }
 
-  // Calculate adjacency
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       if (board[r][c].mine) continue;
@@ -106,7 +105,6 @@ const Minesweeper = () => {
     if (cell.flagged || cell.revealed) return;
 
     if (cell.mine) {
-      // Reveal all mines
       for (const row of b) for (const c of row) if (c.mine) c.revealed = true;
       setBoard(b);
       setStatus("lost");
@@ -130,12 +128,13 @@ const Minesweeper = () => {
     setFlagCount((prev) => prev + (b[r][c].flagged ? 1 : -1));
   };
 
-  // Use a blank board for display before first click
   const displayBoard = board ?? Array.from({ length: rows }, () =>
     Array.from({ length: cols }, (): CellState => ({ mine: false, revealed: false, flagged: false, adjacent: 0 }))
   );
 
-  const cellSize = difficulty === "hard" ? "w-5 h-5 text-[10px]" : "w-6 h-6 text-xs";
+  const isHard = difficulty === "hard";
+  const cellSize = isHard ? "w-5 h-5 text-[10px]" : "w-6 h-6 text-xs";
+  const iconSize = isHard ? 10 : 12;
 
   return (
     <div className="flex flex-col items-center gap-3">
@@ -158,15 +157,18 @@ const Minesweeper = () => {
 
       {/* Info bar */}
       <div className="flex items-center justify-between w-full text-xs text-muted-foreground px-1">
-        <span>💣 {mines - flagCount}</span>
-        <button onClick={reset} className="hover:text-foreground transition-colors">
-          {status === "lost" ? "😵" : status === "won" ? "🎉" : "🙂"} New Game
+        <span className="flex items-center gap-1">
+          <Bomb size={12} /> {mines - flagCount}
+        </span>
+        <button onClick={reset} className="flex items-center gap-1 hover:text-foreground transition-colors">
+          {status === "lost" ? <Frown size={14} /> : status === "won" ? <PartyPopper size={14} /> : <Smile size={14} />}
+          New Game
         </button>
       </div>
 
       {/* Board */}
       <div
-        className="inline-grid border border-border bg-card select-none"
+        className="inline-grid border border-border select-none"
         style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
         onContextMenu={(e) => e.preventDefault()}
       >
@@ -174,32 +176,40 @@ const Minesweeper = () => {
           row.map((cell, c) => (
             <button
               key={`${r}-${c}`}
-              className={`${cellSize} border border-border/50 flex items-center justify-center font-bold leading-none transition-colors ${
+              className={`${cellSize} border border-border/40 flex items-center justify-center font-bold leading-none transition-colors ${
                 cell.revealed
                   ? cell.mine
-                    ? "bg-red-500/20"
-                    : "bg-muted/50"
-                  : "bg-card hover:bg-muted/30 cursor-pointer"
+                    ? "bg-destructive/15"
+                    : "bg-muted"
+                  : "bg-card hover:bg-accent/50 cursor-pointer"
               }`}
               onClick={() => handleClick(r, c)}
               onContextMenu={(e) => handleRightClick(e, r, c)}
             >
               {cell.revealed
                 ? cell.mine
-                  ? "💣"
+                  ? <Bomb size={iconSize} className="text-destructive" />
                   : cell.adjacent > 0
                     ? <span className={ADJACENT_COLORS[cell.adjacent]}>{cell.adjacent}</span>
                     : ""
                 : cell.flagged
-                  ? "🚩"
+                  ? <Flag size={iconSize} className="text-foreground" />
                   : ""}
             </button>
           ))
         )}
       </div>
 
-      {status === "won" && <p className="text-xs text-green-500 font-medium">You won! 🎉</p>}
-      {status === "lost" && <p className="text-xs text-red-500 font-medium">Game over! 💥</p>}
+      {status === "won" && (
+        <p className="text-xs text-muted-foreground font-medium flex items-center gap-1">
+          <PartyPopper size={12} /> You won!
+        </p>
+      )}
+      {status === "lost" && (
+        <p className="text-xs text-muted-foreground font-medium flex items-center gap-1">
+          <Frown size={12} /> Game over
+        </p>
+      )}
     </div>
   );
 };
