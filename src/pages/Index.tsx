@@ -2,8 +2,10 @@ import ChromaticGlitch from "@/components/ChromaticGlitch";
 import SectionCard from "@/components/SectionCard";
 import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Github, Linkedin, FileText, MapPin } from "lucide-react";
+import Minesweeper from "@/components/Minesweeper";
+import { Github, Linkedin, FileText, MapPin, Bomb } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
 import deishacksWin from "@/assets/deishacks-win.png";
 import massShootingsPoster from "@/assets/mass-shootings-poster.jpg";
@@ -304,7 +306,25 @@ const Index = () => {
               </a>
             </div>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Play Minesweeper"
+                >
+                  <Bomb size={14} />
+                </button>
+              </DialogTrigger>
+              <DialogContent className="max-w-fit" onContextMenu={(e) => e.preventDefault()}>
+                <DialogHeader>
+                  <DialogTitle className="text-sm font-medium tracking-wide uppercase">Minesweeper</DialogTitle>
+                </DialogHeader>
+                <Minesweeper />
+              </DialogContent>
+            </Dialog>
+            <ThemeToggle />
+          </div>
         </footer>
       </div>
     </div>
