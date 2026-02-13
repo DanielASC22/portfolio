@@ -281,7 +281,7 @@ const Index = () => {
                 <Github size={14} />
               </a>
               <a
-                href="/Daniel_Olusheki_Resume.pdf"
+                href={`${import.meta.env.BASE_URL}Daniel_Olusheki_Resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
