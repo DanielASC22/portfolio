@@ -6,6 +6,11 @@ import { Github, Linkedin, FileText, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
 import deishacksWin from "@/assets/deishacks-win.png";
+import massShootingsPoster from "@/assets/mass-shootings-poster.jpg";
+
+const distortionSlides = Object.values(
+  import.meta.glob("@/assets/distortion/slide-*.jpg", { eager: true, import: "default" })
+) as string[];
 
 const HELLO_PHRASES = [
   "Hello",
@@ -93,16 +98,19 @@ const projectItems: SectionItem[] = [
     title: "Mass Shootings in America",
     description:
       "Data visualization project aiming to reveal patterns in mass shooting data to explore potential solutions.",
+    image: massShootingsPoster,
   },
   {
     title: "Brand New School Gallery",
     description:
       "Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.",
+    video: "https://youtu.be/y2omaIYksDk",
   },
   {
     title: "Drawing in Distortion",
     description:
       "An exploration of 5-point perspective, experimenting with a unique way of viewing and representing life through distortion.",
+    images: distortionSlides,
   },
 ];
 
