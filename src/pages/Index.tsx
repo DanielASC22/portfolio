@@ -104,6 +104,7 @@ const projectItems: SectionItem[] = [
     title: "Mass Shootings in America",
     description:
       "Data visualization project aiming to reveal patterns in mass shooting data to explore potential solutions.",
+    pdf: `${import.meta.env.BASE_URL}mass-shootings-poster.pdf`,
     image: massShootingsPoster,
   },
   {
