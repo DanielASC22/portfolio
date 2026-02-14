@@ -23,6 +23,26 @@ All portfolio content lives in data arrays at the top of this file:
 
 Update the bio paragraph and footer links (email, LinkedIn, GitHub) in the JSX below the data arrays.
 
+#### SectionItem Keys
+
+Each item in the data arrays is a `SectionItem` object. Here are all available keys:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `title` | `string` | **Required.** The item's heading displayed in the modal. |
+| `modalTitle` | `string` | Optional override for the modal header (e.g., "My Story" instead of the card title). |
+| `subtitle` | `string` | Secondary text shown below the title (e.g., company, date range). |
+| `description` | `string` | A paragraph of body text. |
+| `bullets` | `string[]` | Bulleted list of details (e.g., responsibilities, achievements). |
+| `tags` | `string[]` | Inline tag chips (used for skills, courses, etc.). |
+| `link` | `{ text: string; url: string }` | An external link rendered below the description. |
+| `image` | `string` | A single image (imported asset or URL). Clickable to expand in a lightbox. |
+| `images` | `string[]` | Array of images for a carousel (uses Embla). Overrides single `image`. |
+| `video` | `string` | A YouTube or Vimeo URL embedded as an iframe. |
+| `pdf` | `string` | Path to a PDF file (in `public/`). Embedded in an iframe with clickable links. |
+
+All keys except `title` are optional and can be combined freely.
+
 ### 2. Resume
 
 Replace `public/Daniel_Olusheki_Resume.pdf` with your own resume file and update the link in the footer if the filename changes.
