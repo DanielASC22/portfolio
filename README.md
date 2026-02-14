@@ -2,8 +2,6 @@
 
 A minimal, dark-themed personal portfolio website built with React, Vite, Tailwind CSS, and TypeScript. Features a bento-grid layout, animated text effects, a live LeetCode stats widget, and light/dark mode toggle.
 
-**Live site:** [olusheki.lovable.app](https://olusheki.lovable.app)
-
 ---
 
 ## Using This as a Template
