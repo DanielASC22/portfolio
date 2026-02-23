@@ -2,10 +2,21 @@ import ChromaticGlitch from "@/components/ChromaticGlitch";
 import SectionCard from "@/components/SectionCard";
 import type { SectionItem } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Github, Linkedin, FileText, MapPin } from "lucide-react";
+import Minesweeper from "@/components/Minesweeper";
+import { Github, Linkedin, FileText, MapPin, Bomb } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useLeetCodeStats } from "@/hooks/useLeetCodeStats";
 import deishacksWin from "@/assets/deishacks-win.png";
+import massShootingsPoster from "@/assets/mass-shootings-poster.jpg";
+
+const distortionSlides = Object.values(
+  import.meta.glob("@/assets/distortion/slide-*.jpg", { eager: true, import: "default" })
+) as string[];
+
+const bnsGallerySlides = Object.values(
+  import.meta.glob("@/assets/bns-gallery/slide-*.jpg", { eager: true, import: "default" })
+) as string[];
 
 const HELLO_PHRASES = [
   "Hello",
@@ -93,16 +104,21 @@ const projectItems: SectionItem[] = [
     title: "Mass Shootings in America",
     description:
       "Data visualization project aiming to reveal patterns in mass shooting data to explore potential solutions.",
+    pdf: `${import.meta.env.BASE_URL}mass-shootings-poster.pdf`,
+    image: massShootingsPoster,
   },
   {
     title: "Brand New School Gallery",
     description:
       "Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.",
+    video: "https://youtu.be/y2omaIYksDk",
+    images: bnsGallerySlides,
   },
   {
     title: "Drawing in Distortion",
     description:
       "An exploration of 5-point perspective, experimenting with a unique way of viewing and representing life through distortion.",
+    images: distortionSlides,
   },
 ];
 
@@ -279,7 +295,7 @@ const Index = () => {
                 <Github size={14} />
               </a>
               <a
-                href="/Daniel_Olusheki_Resume.pdf"
+                href={`${import.meta.env.BASE_URL}Daniel_Olusheki_Resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -289,7 +305,25 @@ const Index = () => {
               </a>
             </div>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Play Minesweeper"
+                >
+                  <Bomb size={14} />
+                </button>
+              </DialogTrigger>
+              <DialogContent className="max-w-fit" onContextMenu={(e) => e.preventDefault()}>
+                <DialogHeader>
+                  <DialogTitle className="text-sm font-medium tracking-wide uppercase">Minesweeper</DialogTitle>
+                </DialogHeader>
+                <Minesweeper />
+              </DialogContent>
+            </Dialog>
+            <ThemeToggle />
+          </div>
         </footer>
       </div>
     </div>
