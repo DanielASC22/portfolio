@@ -54,4 +54,3 @@ npm i
 npm run dev
 ```
 
-Built with [Lovable](https://lovable.dev).

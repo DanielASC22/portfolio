@@ -109,11 +109,11 @@ const projectItems: SectionItem[] = [
 const skillItems: SectionItem[] = [
   {
     title: "Languages & Frameworks",
-    tags: ["JavaScript", "Python", "React.js", "HTML", "CSS", "TypeScript"],
+    tags: ["JavaScript", "Python", "React.js", "HTML", "CSS", "Java"],
   },
   {
     title: "Tools & Platforms",
-    tags: ["GitHub", "Git", "Napari", "Houdini", "After Effects", "Figma", "Thunkable", "Mantra"],
+    tags: ["GitHub", "Git", "Napari", "Houdini", "After Effects"],
   },
   {
     title: "Other",
@@ -122,7 +122,6 @@ const skillItems: SectionItem[] = [
       "Visual Storytelling",
       "Debugging",
       "Web Development",
-      "Game Design",
       "Presentation Skills",
     ],
   },
@@ -134,12 +133,12 @@ const courseItems: SectionItem[] = [
     tags: [
       "COSI 12B: Advanced Programming Techniques in Java",
       "COSI 21A: Data Structures & Algorithms",
-      "Discrete Math",
+      "MATH 15A: Linear Algebra",
     ],
   },
   {
     title: "Biology",
-    tags: ["Intro to Biology", "Molecular Biology", "Genetics"],
+    tags: ["BIO 15A: Cells and Organisms", "BIO 14A: Genetics and Genomics"],
   },
 ];
 
@@ -230,8 +229,7 @@ const Index = () => {
 
         {/* Bio */}
         <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-          First-year Computer Science and Biology student at Brandeis University. STEM Posse Scholar, Oliver Scholar,
-          and Dean's List recipient. Passionate about solving complex problems through creative and analytical thinking.
+          First-year Computer Science and Biology student at Brandeis University who is passionate about solving complex problems through creative and analytical thinking.
         </p>
 
         {/* Section cards */}
