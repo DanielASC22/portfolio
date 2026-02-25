@@ -102,8 +102,38 @@ const Minesweeper = () => {
       b = b.map((row) => row.map((cell) => ({ ...cell })));
     }
     const cell = b[r][c];
-    if (cell.flagged || cell.revealed) return;
+    if (cell.flagged) return;
 
+    // Chording: click on revealed numbered cell
+    if (cell.revealed) {
+      if (cell.adjacent === 0) return;
+      let surroundingFlags = 0;
+      for (let dr = -1; dr <= 1; dr++)
+        for (let dc = -1; dc <= 1; dc++) {
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < b.length && nc >= 0 && nc < b[0].length && b[nr][nc].flagged) surroundingFlags++;
+        }
+      if (surroundingFlags !== cell.adjacent) return;
+      let hitMine = false;
+      for (let dr = -1; dr <= 1; dr++)
+        for (let dc = -1; dc <= 1; dc++) {
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < b.length && nc >= 0 && nc < b[0].length && !b[nr][nc].flagged && !b[nr][nc].revealed) {
+            if (b[nr][nc].mine) hitMine = true;
+            reveal(b, nr, nc);
+          }
+        }
+      if (hitMine) {
+        for (const row of b) for (const c of row) if (c.mine) c.revealed = true;
+        setBoard(b);
+        setStatus("lost");
+        return;
+      }
+      setBoard(b);
+      if (checkWin(b)) setStatus("won");
+      return;
+    }
+    
     if (cell.mine) {
       for (const row of b) for (const c of row) if (c.mine) c.revealed = true;
       setBoard(b);
