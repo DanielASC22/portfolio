@@ -17,7 +17,7 @@ All portfolio content lives in data arrays at the top of this file:
 - **`projectItems`** — Featured projects (supports images, links, descriptions)
 - **`skillItems`** — Skills grouped by category
 - **`courseItems`** — Relevant coursework
-- **`aboutItems`** — About Me modal content
+- **`blogPosts`** — Blog entries for the new BlogCard
 
 Update the bio paragraph and footer links (email, LinkedIn, GitHub) in the JSX below the data arrays.
 
@@ -40,6 +40,18 @@ Each item in the data arrays is a `SectionItem` object. Here are all available k
 | `pdf` | `string` | Path to a PDF file (in `public/`). Embedded in an iframe with clickable links. |
 
 All keys except `title` are optional and can be combined freely.
+
+#### BlogPost Keys
+
+Each item in the `blogPosts` array is a `BlogPost` object.
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `title` | `string` | **Required.** Title of the post. |
+| `date` | `string` | **Required.** Displayed date (e.g., "Mar 2026"). |
+| `excerpt` | `string` | **Required.** Short description appearing on the card hover card. |
+| `content` | `string` | **Required.** The full content of the blog post shown in the modal. |
+| `link` | `{ text: string; url: string }` | Optional external link for the post. |
 
 ### 2. Resume
 
