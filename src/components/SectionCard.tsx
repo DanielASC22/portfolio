@@ -58,9 +58,8 @@ const ImageCarousel = ({ images, title }: { images: string[]; title: string }) =
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                i === current ? "bg-foreground" : "bg-muted-foreground/30"
-              }`}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${i === current ? "bg-foreground" : "bg-muted-foreground/30"
+                }`}
             />
           ))}
         </div>
@@ -251,7 +250,7 @@ const SectionCard = ({ title, items, disableGlitch, badge }: SectionCardProps) =
               )}
 
               {item.description && (
-                <p className="text-xs text-muted-foreground leading-relaxed mb-4 break-words">
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4 break-words whitespace-pre-wrap">
                   {item.description}
                 </p>
               )}
