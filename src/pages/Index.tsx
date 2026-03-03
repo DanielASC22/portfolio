@@ -20,6 +20,10 @@ const bnsGallerySlides = Object.values(
   import.meta.glob("@/assets/bns-gallery/slide-*.jpg", { eager: true, import: "default" })
 ) as string[];
 
+const ipurifySlides = Object.values(
+  import.meta.glob("@/assets/ipurify/slide-*.jpg", { eager: true, import: "default" })
+) as string[];
+
 const HELLO_PHRASES = [
   "Hello",
   "Hola",
@@ -35,52 +39,62 @@ const HELLO_PHRASES = [
 ];
 
 const experienceItems: SectionItem[] = [
+  // TODO: Put future experiences, like incoming CA @ Brandeis and COSI SSSP Tutoring
   {
     title: "Undergraduate Computational Biology Researcher",
     subtitle: "Brandeis University · Sebastian Kadener Lab · Oct 2025 – Present",
+    link: { text: "Learn More →", url: "https://www.kadenerlab.com/" },
+    bullets: [
+      "Developed high-fidelity data visualizations using Python and Seaborn to map over 800 unique gene expression patterns across multiple brain sections, improving the accuracy of tissue identification for the research team",
+      "Optimized data processing pipelines for identifying gene markers in fat body tissues, directly supporting a large-scale spatial transcriptomics visualization project",
+    ],
   },
   {
     title: "TAMID Group",
     subtitle: "Brandeis University · Oct 2025 – Present",
+    bullets: [
+      "Developed a comprehensive business plan for a startup, including multi-tiered B2B and B2C outreach strategies alongside 3-year financial projections, targeted marketing, risk mitigation, and legal compliance frameworks"
+    ]
   },
   {
-    title: "Intern — Brand New School",
+    title: "Technical Designer Intern — Brand New School",
     subtitle: "New York, NY · May 2025 – Jun 2025",
     bullets: [
-      "Gained production-level proficiency in Houdini, building procedural node networks and a custom text-to-3D letterform system over 7 weeks.",
-      "Developed skills in 3D modeling, lighting, rendering, and animation; produced experimental typography renders and a motion reel.",
-      "Exhibited 500+ digital artworks in a multimedia gallery showcase, engaging 100+ attendees.",
+      "Gained production-level proficiency in Houdini, building procedural node networks and a custom text-to-3D letterform system over 7 weeks",
+      "Developed skills in 3D modeling, lighting, rendering, and animation; produced experimental typography renders and a motion reel",
+      "Exhibited 500+ digital artworks in a multimedia gallery showcase, engaging 100+ attendees",
     ],
   },
   {
-    title: "Student — Code Nation",
+    title: "Software Engineering Fellow — Google / Code Nation",
     subtitle: "New York, NY · Oct 2022 – Jun 2024",
     bullets: [
-      "Completed a two-year Google-hosted coding fellowship (~120+ hours), building multiple front-end projects with JavaScript and React.js.",
-      "Participated in a Hackathon at Google's NY HQ, collaborating on a prototype hobby-matching web app.",
+      "Completed a two-year Google-hosted coding fellowship (~120+ hours), building multiple front-end projects with JavaScript and React.js",
+      "Participated in a Hackathon at Google's NY HQ, collaborating on a prototype hobby-matching web app",
     ],
   },
   {
     title: "Generation Tech — JPMorganChase",
     subtitle: "New York, NY · Oct 2022 – Nov 2022",
     bullets: [
-      "Collaborated with an 8-person team to design iPurify, a concept app addressing global water pollution.",
-      "Built an animated mobile wireframe using Thunkable and researched environmental policy for real-world feasibility.",
+      "Collaborated with an 8-person team and received mentorship from JPMC Software Engineers to design iPurify, a concept app addressing global water pollution",
+      "Built and presented an animated mobile wireframe using Thunkable and researched environmental policy for real-world feasibility",
     ],
   },
   {
-    title: "Student — All Star Code",
+    title: "Fellow — All Star Code",
     subtitle: "New York, NY · Jul 2022 – Aug 2022",
     bullets: [
-      "Selected for a competitive 6-week Summer Intensive (5,900+ applicants, ~1,000 participants to date).",
-      "Led full-stack development of a 50-resource Community Service Accessibility website, inspiring a $100 donation at the demo.",
+      "Selected for a competitive 6-week Summer Intensive (5,900+ applicants, ~1,000 participants to date)",
+      "Led full-stack development of a 50-resource Community Service Accessibility website, inspiring a $100 donation at the demo",
     ],
   },
   {
     title: "Awards",
     bullets: [
-      "Best Non-Technical Hack — DeisHacks 2026 · $500 award",
-      "Posse Foundation Full-Tuition Scholarship — 1 of 12 selected from ~3,000 · $200K+ value",
+      "Best Non-Technical Hack — DeisHacks 2026 · $1000 award",
+      "Posse Foundation Full-Tuition Scholarship — 1 of 12 selected from ~3,000 · $200K+ value · 2029",
+      "Dean's List — Brandeis University · 2025-2026",
       "F. Coit Johnson Academic Excellence Award — Perfect straight-A transcript · LREI 2025",
       "Owen Gerson Director's Award — Given to one student per year for lasting impact · LREI 2025",
       "1st Place Robot Design Award — NYC FIRST Lego League · 2019",
@@ -110,9 +124,20 @@ const projectItems: SectionItem[] = [
     image: massShootingsPoster,
   },
   {
+    title: "iPurify - Generation Tech",
+    description:
+      `iPurify is a concept app designed to address global water pollution by connecting communities with local water quality data and purification resources. Developed during the Generation Tech program, the project combines mobile-first design with real-world environmental data to empower users to bring awareness to the issue of water pollution in their community.
+      In response to the United Nations sustainable development challenge 6 of Clean water and sanitation, we built iPurify, a mobile application that incentivizes global resistance against unclean water and to make clean drinking water accessible to all.`,
+    video: "https://www.youtube.com/watch?v=B3HVzXXTwAk",
+    images: ipurifySlides,
+  },
+  {
     title: "Brand New School Gallery",
     description:
-      "Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.",
+      `Multimedia gallery showcasing 500+ digital artworks from the Brand New School internship, exhibited via TV installation and prints.\nArtist Statement:\n
+      My name is Daniel Olusheki, and I focused my senior project on the connections between technology and art. I’ve always been passionate about both of these topics: I’ve been drawing for as long as I can remember, and in the fall, I will study computer science at Brandeis University. I’ve always wanted to experiment with different types of art, so I decided to explore various media that emerged in distinct technological periods—charcoal (30,000 BCE), calligraphy (2000 BCE), watercolor (200 CE), photography (1820s), linoleum printing (Late 19th Century), pastels (Early 20th Century), and 3D art (1980s). This approach allowed me to learn about the different techniques required to create art in each medium. I decided to create self-portraits to maintain consistent subject matter in each medium and to push creativity.\n 
+      The fundamental idea behind my 3D art was inspired by BrandNewSchool, a creative studio and advertising agency where I interned and where I learned Houdini, a 3D art software. They created an experimental ad for Google Cloud Next 2025, designed to push the boundaries of letterforms in order to create something distinct. This inspired me because letters can appear as simple shapes until you stretch the limits. Another person who influenced my art was William Kentridge, a charcoal artist who incorporated skillful composition and color into his drawings. I also referenced calligraphy guidebooks to emulate precise Gothic calligraphy and drew inspiration from the work of Van Gogh when creating my oil pastel self-portrait. Each of these different references depicted mastery in their respective media; however, I noticed that as technology advanced, the media gave less creative constraints and were significantly quicker to create.\n 
+      Exploring all of these different media taught me several important lessons: the art techniques used before modern technology relied on essential visual principles, which are still crucial now in order to create artistic stuff. For example, learning software won't result in good art if you don’t have an understanding of color theory, composition, or lighting. These principles and skills are timeless and required of artists working in any media if they want to bring out the full potential of the medium. Creating all this art was eye-opening as it taught me that art is art, regardless of the different ways it’s made.`,
     video: "https://youtu.be/y2omaIYksDk",
     images: bnsGallerySlides,
   },
@@ -127,7 +152,7 @@ const projectItems: SectionItem[] = [
 const skillItems: SectionItem[] = [
   {
     title: "Languages & Frameworks",
-    tags: ["JavaScript", "Python", "React.js", "HTML", "CSS", "Java"],
+    tags: ["Java", "Python", "React.js", "HTML", "CSS", "JavaScript", "Seaborn", "Matplotlib"],
   },
   {
     title: "Tools & Platforms",
@@ -151,12 +176,13 @@ const courseItems: SectionItem[] = [
     tags: [
       "COSI 12B: Advanced Programming Techniques in Java",
       "COSI 21A: Data Structures & Algorithms",
+      "COSI 91G: Introduction to Research Practice",
       "MATH 15A: Linear Algebra",
     ],
   },
   {
     title: "Biology",
-    tags: ["BIO 15A: Cells and Organisms", "BIO 14A: Genetics and Genomics"],
+    tags: ["BIOL 15A: Cells and Organisms", "BIOL 14A: Genetics and Genomics", "BIOL 91G: Introduction to Research Practice"],
   },
 ];
 
