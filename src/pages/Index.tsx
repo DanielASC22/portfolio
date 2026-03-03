@@ -31,6 +31,7 @@ const HELLO_PHRASES = [
   "Namaste",
   "Guten Tag",
   "Ni hao",
+  "Wagwan",
   "Konnichiwa",
   "Annyeonghaseyo",
   "Marhaba",
@@ -39,7 +40,7 @@ const HELLO_PHRASES = [
 ];
 
 const experienceItems: SectionItem[] = [
-  // TODO: Put future experiences, like incoming CA @ Brandeis and COSI SSSP Tutoring
+  // TODO: Put future experiences, like incoming CA @ Brandeis and COSI SSSP Tutoring and Branda EBoard, Tuterra in Projects Section, and ABG for projects.
   {
     title: "Undergraduate Computational Biology Researcher",
     subtitle: "Brandeis University · Sebastian Kadener Lab · Oct 2025 – Present",
@@ -125,19 +126,18 @@ const projectItems: SectionItem[] = [
   },
   {
     title: "iPurify - Generation Tech",
-    description:
-      `iPurify is a concept app designed to address global water pollution by connecting communities with local water quality data and purification resources. Developed during the Generation Tech program, the project combines mobile-first design with real-world environmental data to empower users to bring awareness to the issue of water pollution in their community.
-      In response to the United Nations sustainable development challenge 6 of Clean water and sanitation, we built iPurify, a mobile application that incentivizes global resistance against unclean water and to make clean drinking water accessible to all.`,
+    description: `iPurify is a concept app designed to address global water pollution by connecting communities with local water quality data and purification resources. Developed during the Generation Tech program, the project combines mobile-first design with real-world environmental data to empower users to bring awareness to the issue of water pollution in their community.
+In response to the United Nations sustainable development challenge 6 of Clean water and sanitation, we built iPurify, a mobile application that incentivizes global resistance against unclean water and to make clean drinking water accessible to all.`,
     video: "https://www.youtube.com/watch?v=B3HVzXXTwAk",
     images: ipurifySlides,
   },
   {
     title: "BrandNewSchool Gallery",
-    description:
-      `Multimedia gallery showcasing 500+ digital artworks from the BrandNewSchool internship, exhibited via TV installation and prints.\nArtist Statement:\n
-      My name is Daniel Olusheki, and I focused my senior project on the connections between technology and art. I’ve always been passionate about both of these topics: I’ve been drawing for as long as I can remember, and in the fall, I will study computer science at Brandeis University. I’ve always wanted to experiment with different types of art, so I decided to explore various media that emerged in distinct technological periods—charcoal (30,000 BCE), calligraphy (2000 BCE), watercolor (200 CE), photography (1820s), linoleum printing (Late 19th Century), pastels (Early 20th Century), and 3D art (1980s). This approach allowed me to learn about the different techniques required to create art in each medium. I decided to create self-portraits to maintain consistent subject matter in each medium and to push creativity.\n 
-      The fundamental idea behind my 3D art was inspired by BrandNewSchool, a creative studio and advertising agency where I interned and where I learned Houdini, a 3D art software. They created an experimental ad for Google Cloud Next 2025, designed to push the boundaries of letterforms in order to create something distinct. This inspired me because letters can appear as simple shapes until you stretch the limits. Another person who influenced my art was William Kentridge, a charcoal artist who incorporated skillful composition and color into his drawings. I also referenced calligraphy guidebooks to emulate precise Gothic calligraphy and drew inspiration from the work of Van Gogh when creating my oil pastel self-portrait. Each of these different references depicted mastery in their respective media; however, I noticed that as technology advanced, the media gave less creative constraints and were significantly quicker to create.\n 
-      Exploring all of these different media taught me several important lessons: the art techniques used before modern technology relied on essential visual principles, which are still crucial now in order to create artistic stuff. For example, learning software won't result in good art if you don’t have an understanding of color theory, composition, or lighting. These principles and skills are timeless and required of artists working in any media if they want to bring out the full potential of the medium. Creating all this art was eye-opening as it taught me that art is art, regardless of the different ways it’s made.`,
+    description: `Multimedia gallery showcasing 500+ digital artworks from the BrandNewSchool internship, exhibited via TV installation and prints.\n
+Artist Statement:\n
+My name is Daniel Olusheki, and I focused my senior project on the connections between technology and art. I’ve always been passionate about both of these topics: I’ve been drawing for as long as I can remember, and in the fall, I will study computer science at Brandeis University. I’ve always wanted to experiment with different types of art, so I decided to explore various media that emerged in distinct technological periods—charcoal (30,000 BCE), calligraphy (2000 BCE), watercolor (200 CE), photography (1820s), linoleum printing (Late 19th Century), pastels (Early 20th Century), and 3D art (1980s). This approach allowed me to learn about the different techniques required to create art in each medium. I decided to create self-portraits to maintain consistent subject matter in each medium and to push creativity.\n
+The fundamental idea behind my 3D art was inspired by BrandNewSchool, a creative studio and advertising agency where I interned and where I learned Houdini, a 3D art software. They created an experimental ad for Google Cloud Next 2025, designed to push the boundaries of letterforms in order to create something distinct. This inspired me because letters can appear as simple shapes until you stretch the limits. Another person who influenced my art was William Kentridge, a charcoal artist who incorporated skillful composition and color into his drawings. I also referenced calligraphy guidebooks to emulate precise Gothic calligraphy and drew inspiration from the work of Van Gogh when creating my oil pastel self-portrait. Each of these different references depicted mastery in their respective media; however, I noticed that as technology advanced, the media gave less creative constraints and were significantly quicker to create.\n
+Exploring all of these different media taught me several important lessons: the art techniques used before modern technology relied on essential visual principles, which are still crucial now in order to create artistic stuff. For example, learning software won't result in good art if you don’t have an understanding of color theory, composition, or lighting. These principles and skills are timeless and required of artists working in any media if they want to bring out the full potential of the medium. Creating all this art was eye-opening as it taught me that art is art, regardless of the different ways it’s made.`,
     video: "https://youtu.be/y2omaIYksDk",
     images: bnsGallerySlides,
   },
