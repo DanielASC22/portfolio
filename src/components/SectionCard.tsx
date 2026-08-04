@@ -309,30 +309,23 @@ const SectionCard = ({
                 </div>
 
                 <h2 className="text-lg font-semibold tracking-wide mb-4 text-foreground break-words pr-8">
-                  {item.link ? (
-                    <a
-                      href={item.link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline underline-offset-4"
-                    >
-                      {disableGlitch ? (
-                        item.modalTitle || item.title
-                      ) : (
-                        <MonoGlitch
-                          text={item.modalTitle || item.title}
-                          skipFirstAnimation
-                        />
-                      )}
-                    </a>
-                  ) : disableGlitch ? (
-                    item.modalTitle || item.title
-                  ) : (
-                    <MonoGlitch
-                      text={item.modalTitle || item.title}
-                      skipFirstAnimation
-                    />
-                  )}
+                  <a
+                    href={item.link?.url}
+                    target={item.link ? "_blank" : undefined}
+                    rel={item.link ? "noopener noreferrer" : undefined}
+                    className={item.link ? "hover:underline underline-offset-4" : "pointer-events-none"}
+                    aria-disabled={item.link ? undefined : true}
+                    tabIndex={item.link ? undefined : -1}
+                  >
+                    {disableGlitch ? (
+                      item.modalTitle || item.title
+                    ) : (
+                      <MonoGlitch
+                        text={item.modalTitle || item.title}
+                        skipFirstAnimation
+                      />
+                    )}
+                  </a>
                 </h2>
               </div>
 
