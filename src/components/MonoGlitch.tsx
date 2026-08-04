@@ -94,7 +94,7 @@ const HoverChar = ({
       return;
     }
     const el = ref.current;
-    if (el) el.textContent = " ";
+    if (el) el.textContent = NBSP;
     timeoutRef.current = window.setTimeout(() => {
       timeoutRef.current = null;
       start();
