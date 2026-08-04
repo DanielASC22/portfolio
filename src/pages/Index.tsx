@@ -37,6 +37,10 @@ const datathonSlides = Object.values(
   import.meta.glob("@/assets/datathon/slide-*.png", { eager: true, import: "default" })
 ) as string[];
 
+const avowSlides = Object.values(
+  import.meta.glob("@/assets/avow/slide-*.png", { eager: true, import: "default" })
+) as string[];
+
 const HELLO_PHRASES = [
   "Hello",
   "Hola",
@@ -57,10 +61,18 @@ const experienceItems: SectionItem[] = [
     title: "Incoming Positions",
     current: true,
     bullets: [
-      "BreakThroughTech AI/ML Fellow @ CornellTech - Jun 2026",
       "Community Advisor (Resident Assistant) @ Brandeis University - Aug 2026",
-      "COSI 12B SSSP Peer Tutor @ Brandeis University - Aug 2026",
-      "Project Manager @ TAMID GROUP - Aug 2026"
+      "COSI 12B SSSP Peer Tutor @ Brandeis University - Aug 2026"
+    ],
+  },
+  {
+    title: "AI/ML Fellow — Break Through Tech AI",
+    displayName: "AI/ML Fellow — BTT",
+    current: true,
+    subtitle: "Cornell Tech · New York, NY · May 2026 – Present",
+    bullets: [
+      "Engineered an end-to-end Text-to-SQL RAG system using Python, LangChain, and the OpenAI API, transforming natural language prompts into executable SQL queries to extract and summarize enterprise database insights",
+      "Trained and benchmarked a multi-layer Neural Network against Decision Tree baselines for binary income classification; optimized architecture via grid search tuning and evaluated performance using AUC-ROC and confusion matrices",
     ],
   },
   {
@@ -69,27 +81,21 @@ const experienceItems: SectionItem[] = [
     subtitle: "Brandeis University · Branda App · Feb 2026 – Present",
     link: { text: "Learn More →", url: "https://www.instagram.com/brandaapp/" },
     bullets: [
-      "Selected to develop the Android expansion of the Branda app (>5,000 users) with the primary objective of migrating the currently iOS-exclusive platform to Android to achieve 100% student body accessibility.",
+      "Engineered a cross-platform migration to scale an existing 6,000+ daily active user base to the Android ecosystem, translating legacy iOS Swift architecture into native Kotlin while utilizing AI code-analysis models to accelerate feature parity in a 5-engineer team — targeting 100% student-body accessibility",
+      "Contributing to an analytics feedback loop that translates student user data from in-app submissions into the core product engineering roadmap",
     ],
   },
   {
     title: "Computational Biology Researcher",
     displayName: "Comp Bio Researcher",
     current: true,
-    subtitle: "Brandeis University · Sebastian Kadener Lab · Sep 2025 – Present",
+    subtitle: "Brandeis University · Sebastian Kadener Lab · Oct 2025 – Present",
     link: { text: "Learn More →", url: "https://www.kadenerlab.com/" },
     bullets: [
-      "Developed high-fidelity data visualizations using Python and Seaborn to map over 800 unique gene expression patterns across multiple brain sections, improving the accuracy of tissue identification for the research team",
-      "Optimized data processing pipelines for identifying gene markers across several tissues, directly supporting a large-scale spatial transcriptomics visualization project",
+      "Built an end-to-end R/Python pipeline harmonizing 288K-cell scRNA-seq data with over 200GB spatial transcriptomics datasets, engineering memory-efficient workflows and RDS-based caching to run large-scale differential expression",
+      "Designed a multi-reference cell-type annotation system that cross-validates cluster identities against two independent marker atlases, with automated consistency checks that flag biologically implausible calls",
+      "Created 350+ programmatic spatial distribution models to enable visual boundary auditing, mapping isolated genetic markers directly onto Drosophila brain histology slices via Seaborn vector plots across 800+ unique gene expression patterns",
     ],
-  },
-  {
-    title: "Project Manager — TAMID",
-    current: true,
-    subtitle: "TAMID Group @ Brandeis University · Oct 2025 – Present",
-    bullets: [
-      "Developed a comprehensive business plan for a startup, including multi-tiered B2B and B2C outreach strategies alongside 3-year financial projections, targeted marketing, risk mitigation, and legal compliance frameworks"
-    ]
   },
   {
     title: "Event Coordinator — Branda",
@@ -152,7 +158,25 @@ const experienceItems: SectionItem[] = [
 
 const projectItems: SectionItem[] = [
   {
-    title: "Probabilistic March Madness Forecasting Ensemble — Datathon 2026",
+    title: "aVow — Android Focus App",
+    displayName: "aVow (Mobile App)",
+    description: `aVow is an Android focus app that makes your self-control decisions stick. You set a vow — a timer from a few minutes to 99 days — and the apps and websites you chose to block stay blocked until it runs out. You can always make a vow stricter or add time, but you can't unlock early. Everything runs on your device: no account, no servers, no analytics.\n
+Most app blockers are one tap away from being switched off — right when they need to hold. aVow is built around a single idea: once you commit, the decision is out of your hands until the timer ends. It's for people who already know what distracts them and want a boundary that doesn't fold in a weak moment.\n
+Two editions build from one codebase: a Play-Store-compliant lite edition (Accessibility-based enforcement), and a full edition with Device Owner locks that block uninstall, factory reset, and Safe Mode.`,
+    images: avowSlides,
+    link: { text: "View on GitHub →", url: "https://github.com/olusheki/avow" },
+    tags: ["Kotlin", "Jetpack Compose", "Coroutines", "DataStore", "WorkManager", "SQLite", "AccessibilityService", "VpnService", "Android Keystore"],
+  },
+  {
+    title: "Harmonizing Spatial Transcriptomics and Single-Cell RNA Sequencing Data — SciFest 2026",
+    displayName: "SciFest 2026 Research Poster",
+    description: `Research poster presented at Brandeis SciFest 2026. Authors: Daniel Olusheki, Sebastian Kadener.\n
+Patterns of gene expression underlie most molecular and physiological responses. This is particularly important in the brain, where neurons display specific gene expression patterns that allow them to present specific morphological and functional properties, key for the functioning of the brain. In this context, determining the precise pattern of expression of neuronal types is key to understanding their function and mechanism of action. The Kadener lab has recently performed spatial transcriptomics of the fly head. While this allows the identification of specific cell types, in particular neuronal types and subtypes, the fly brain has ~100,000 neurons, making this work really difficult. To simplify this task, my project focuses on matching available single-cell brain data to their spatial location. This is important because scRNA-seq provides greater depth and resolution of genetic information but lacks spatial context, while spatial data is shallow in information but allows you to see a cell's location. In this project, I analyze a Drosophila central brain single-cell RNA-seq dataset, excluding mushroom body cells, to harmonize the informational depth of scRNA-seq with the imaging of spatial transcriptomics data by starting from mbl, klg, and side-III, genes of interest. We first prioritize clustered cell groups that express our genes of interest by filtering for the number of cells and expression level. Using plots, we can visualize expression patterns and identify clusters of interest. By extracting the distinct and representative gene markers from those clusters, we can identify their general biological function, cell type, where these marker genes are typically expressed, and attribute them to physical brain locations. This project lays the groundwork for automating the harmonization of scRNA-seq data to spatial transcriptomics datasets.`,
+    pdf: `${import.meta.env.BASE_URL}scifest-poster.pdf`,
+    tags: ["Spatial Transcriptomics", "scRNA-seq", "Drosophila", "R", "Python", "Seaborn", "Bioinformatics", "Kadener Lab"],
+  },
+  {
+    title: "Probabilistic March Madness Forecasting Ensemble — Datathon 2026 (2nd Place)",
     displayName: "NCAA Predictive Ensemble",
     prize: "2nd",
     description:
@@ -163,7 +187,7 @@ const projectItems: SectionItem[] = [
     tags: ["Python", "Scikit-Learn", "Machine Learning"]
   },
   {
-    title: "Museum Website Revamp — DeisHacks 2026",
+    title: "Museum Website Revamp — DeisHacks 2026 (1st Place)",
     displayName: "Museum Site Revamp",
     prize: "1st",
     description:
@@ -172,7 +196,7 @@ const projectItems: SectionItem[] = [
     link: { text: "View on Devpost →", url: "https://devpost.com/software/askdjaskd" },
   },
   {
-    title: "BioTrial Auditor — Lovable Buildathon 2026",
+    title: "BioTrial Auditor — Lovable Buildathon 2026 (1st Place)",
     displayName: "BioTrial Auditor",
     prize: "1st",
     description:
@@ -238,11 +262,19 @@ In response to the United Nations sustainable development challenge 6 of Clean w
 const skillItems: SectionItem[] = [
   {
     title: "Languages & Frameworks",
-    tags: ["Java", "Python", "React", "HTML", "CSS", "JavaScript", "Seaborn", "Matplotlib", "Scanpy", "Pandas", "NumPy", "Kotlin"],
+    tags: ["Java", "Python", "R", "Kotlin", "TypeScript", "JavaScript", "HTML", "CSS", "SQL", "React", "Tailwind CSS", "NumPy", "Pandas", "Seaborn", "Matplotlib", "Scanpy", "Scikit-Learn"],
+  },
+  {
+    title: "AI/ML",
+    tags: ["LangChain", "OpenAI API", "RAG", "Prompt Engineering", "Generative AI", "NLP", "Neural Networks", "CNNs", "Linear Regression", "Machine Learning", "AI Governance"],
+  },
+  {
+    title: "Lab / Wet-lab",
+    tags: ["PCR", "Autoclave", "Bench Work", "Data Analysis", "Data Visualization", "Cluster Analysis", "Laboratory Skills"],
   },
   {
     title: "Tools & Platforms",
-    tags: ["GitHub", "Git", "Napari", "Houdini", "After Effects"],
+    tags: ["GitHub", "Git", "Android Studio", "Napari", "Houdini", "After Effects", "AWS"],
   },
   {
     title: "Other",
